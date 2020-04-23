@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="61dp">
+        <TextView android:textSize="15sp" android:textColor="@color/handle_list_name" android:id="@+id/handle_list_name" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18dp" android:text="@string/handle_gamehandle_name"/>
+        <TextView android:textSize="12sp" android:textColor="@color/handle_conn_ing" android:id="@+id/conn_ing" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="18dp" android:text="@string/handle_connecting" android:layout_below="@+id/handle_list_name"/>
+    </RelativeLayout>
+    <View android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+    <cn.nubia.commonui.actionbar.internal.widget.TintCheckBox android:enabled="false" android:layout_gravity="center_vertical" android:id="@+id/tint_checkbox" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="192dp" android:layout_marginEnd="16dp"/>
+</LinearLayout>

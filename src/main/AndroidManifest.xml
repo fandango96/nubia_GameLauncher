@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.2.05_0311" package="cn.nubia.gamelauncher" platformBuildVersionCode="26" platformBuildVersionName="8.0.0">
+    <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="28"/>
+    <uses-permission android:name="cn.nubia.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="cn.nubia.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.DELETE_PACKAGES"/>
+    <uses-permission android:name="android.permission.MANAGE_PROFILE_AND_DEVICE_OWNERS"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission._SECURE_SETTINGS"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="cn.nubia.permission.PROCESS_MANAGER"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="cn.nubia.neostore.downloadService"/>
+    <uses-permission android:name="cn.nubia.permission.BIND_DATA_COLLECTION"/>
+    <uses-permission android:name="cn.nubia.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="cn.nubia.launcher.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher2.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher3.permission.READ_SETTINGS"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <application android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="cn.nubia.gamelauncher.GameLauncherApplication" android:allowBackup="false" android:supportsRtl="true" android:usesCleartextTraffic="true" android:resizeableActivity="false" android:defaultToDeviceProtectedStorage="true" android:roundIcon="@mipmap/ic_launcher_round">
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.GameSpaceActivity" android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.HOME"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.AppAddActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"/>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.UninstallActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"/>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.CustomAstophereMapActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"/>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.GameSpaceKeyHelperActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"/>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicDoubleHandleActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize"/>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicHandleLeftRightCalibrationActivity" android:exported="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize">
+            <intent-filter>
+                <action android:name="cn.nubia.gamelauncher.redhandle"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicHandleHelperActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"/>
+        <provider android:name="cn.nubia.gamelauncher.db.AppAddProvider" android:exported="true" android:authorities="cn.nubia.gamelauncher.db.AppAddProvider"/>
+        <service android:name="cn.nubia.gamelauncher.service.TimerService" android:exported="false"/>
+        <meta-data android:name="cn.nubia.gamelauncher.recycler.GameGlideModule" android:value="GlideModule"/>
+        <service android:name="cn.nubia.gamelauncher.gamehandle.GameHandleService" android:exported="true"/>
+        <receiver android:name="cn.nubia.gamelauncher.gamehandle.BluetoothReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="cn.nubia.action.GAME_MODE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.nubia.gamelauncher.receiver.BuryReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="cn.nubia.owlsystem.firstbootdayaction"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="cn.nubia.gamelauncher.aimhelper.AimService" android:enabled="true" android:exported="true">
+            <intent-filter>
+                <action android:name="cn.nubia.gamelauncher.action.START_HELPER"/>
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="50dp">
+    <ProgressBar android:id="@+id/nubia_progressBar" android:layout_width="match_parent" android:layout_height="match_parent" android:max="1000" android:progress="0" android:progressDrawable="@drawable/nubia_progress_selector" style="?android:attr/progressBarStyleHorizontal"/>
+    <Button android:textColor="@android:color/white" android:ellipsize="end" android:id="@+id/download_button" android:background="@drawable/nubia_dynamic_default_material" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/nubia_download" android:singleLine="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:paddingStart="8dp" android:paddingEnd="8dp"/>
+</RelativeLayout>

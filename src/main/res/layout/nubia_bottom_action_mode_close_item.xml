@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:gravity="center" android:background="@drawable/nubia_action_mode_bottom_close_bg" android:clickable="true" android:layout_width="@dimen/nubia_action_mode_close_button_default_width" android:layout_height="@dimen/nubia_action_bar_split_height">
+    <TextView android:ellipsize="marquee" android:gravity="center_vertical" android:id="@+id/nubia_bottom_action_mode_close_button" android:background="@drawable/nubia_action_mode_close_menu_material" android:layout_width="36dp" android:layout_height="36dp" android:layout_marginLeft="8dp" android:layout_marginRight="4dp" android:maxLines="1"/>
+</LinearLayout>

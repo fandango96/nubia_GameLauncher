@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView android:textSize="12sp" android:textColor="@color/handle_choose_text" android:layout_gravity="center_horizontal" android:id="@+id/handle_choose_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19dp" android:text="@string/handle_choose_connect" android:alpha="0.5"/>
+    <View android:id="@+id/handle_line" android:background="@color/handle_dividing_line" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginTop="16.33dp" android:alpha="0.15"/>
+    <ListView android:id="@+id/choose_list" android:layout_width="match_parent" android:layout_height="140dp" android:divider="@null"/>
+</LinearLayout>

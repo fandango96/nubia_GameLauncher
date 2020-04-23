@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:id="@+id/bluetooth_no_conn_device" android:layout_width="268dp" android:layout_height="wrap_content">
+    <TextView android:textSize="15sp" android:textColor="@color/handle_bluetooth_search_no_device" android:gravity="center" android:id="@+id/handle_bluetooth_search_no_device" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="26dp" android:layout_marginBottom="25dp" android:text="@string/handle_no_connectable_device"/>
+</LinearLayout>

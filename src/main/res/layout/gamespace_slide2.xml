@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@+id/gamespace_slide2" android:background="@drawable/gamespace_key_help_2" android:layout_width="wrap_content" android:layout_height="208dp" android:layout_marginTop="66dp"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="@dimen/key_help_text_size" android:textColor="@color/gamespace_title_color" android:layout_gravity="center_horizontal" android:id="@+id/tail_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="@string/game_space_function_string_slide2"/>
+    <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="@dimen/key_help_text_sub_size" android:textColor="@color/gamespace_title_color_sub" android:layout_gravity="center_horizontal" android:id="@+id/tail_text_sub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:text="@string/game_space_function_string_slide2_sub"/>
+</LinearLayout>

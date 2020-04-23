@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <cn.nubia.gamelauncher.recycler.BannerRecyclerView android:id="@+id/game_list" android:layout_width="match_parent" android:layout_height="@dimen/game_shadow_height" android:layout_marginBottom="14dp" android:alpha="0" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0" app:layout_constraintTop_toTopOf="0"/>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" app:layout_constraintBottom_toBottomOf="0" app:layout_constraintTop_toTopOf="0">
+        <android.support.v4.view.ViewPager android:id="@+id/main_home_entrance_vp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <cn.nubia.gamelauncher.gamelist.IndicatorView android:id="@+id/main_home_entrance_indicator" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="28dp"/>
+    </LinearLayout>
+    <ImageView android:id="@+id/magic_logo" android:background="@mipmap/logo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28dp" android:layout_marginTop="22dp" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintTop_toTopOf="0"/>
+    <ImageView android:id="@+id/add_shortcut" android:background="@mipmap/add_shortcut_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13dp" android:layout_marginRight="366dp" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toTopOf="0"/>
+    <TextView android:textSize="8sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/add_shortcut_tips" android:background="@drawable/add_shortcut_tips_bg_top" android:paddingLeft="18dp" android:paddingRight="14dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginRight="366dp" android:text="@string/add_shortcut_tips" app:layout_constraintEnd_toEndOf="0" app:layout_constraintStart_toStartOf="0" app:layout_constraintTop_toBottomOf="@+id/add_shortcut"/>
+    <include layout="@layout/upper_view"/>
+    <include layout="@layout/lower_view"/>
+    <android.support.v7.widget.RecyclerView android:id="@+id/guild_page_list" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="0" app:layout_constraintRight_toRightOf="0"/>
+</android.support.constraint.ConstraintLayout>

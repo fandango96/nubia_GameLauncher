@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cn.nubia.commonui.actionbar.internal.view.menu.ActionMenuItemView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:textAppearance="?android:attr/actionMenuTextAppearance" android:textColor="?attr/actionMenuTextColor" android:gravity="center" android:layout_gravity="center" android:paddingTop="@dimen/nubia_action_bar_menu_item_layout_padding" android:focusable="true" android:layout_width="66dp" android:layout_height="wrap_content" android:singleLine="true"/>

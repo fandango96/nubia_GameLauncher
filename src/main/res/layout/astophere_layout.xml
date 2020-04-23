@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <cn.nubia.gamelauncher.view.SimpleEditImageView android:id="@+id/simple_edit" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="matrix"/>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@+id/mask" android:background="@mipmap/astophere_mask" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <LinearLayout android:layout_gravity="bottom|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20dp">
+        <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@+id/cancel" android:background="@drawable/handle_button_bg" android:layout_width="110dp" android:layout_height="30dp" android:text="@string/astophere_cancel"/>
+        <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@+id/apply" android:background="@drawable/handle_button_bg" android:layout_width="110dp" android:layout_height="30dp" android:layout_marginLeft="8dp" android:text="@string/astophere_apply"/>
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44dp" android:layout_marginRight="30dp" android:layout_marginBottom="44dp">
+        <TextView android:textSize="14dp" android:textColor="#fffafafa" android:gravity="center" android:id="@+id/gallery" android:background="@mipmap/gallery_bg" android:layout_width="50dp" android:layout_height="50dp" android:text="@string/astophere_gallery"/>
+        <android.support.v7.widget.RecyclerView android:id="@+id/picture_list" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <ImageView android:id="@+id/guild_page_window_bg" android:background="#ff0a0b12" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <LinearLayout android:id="@+id/guild_page_indicator" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <ImageView android:id="@+id/guild_page_slid_left" android:background="@mipmap/guild_page_slide_default" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <ImageView android:id="@+id/guild_page_slid_mid" android:background="@mipmap/guild_page_slide_light" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2dp" android:layout_marginRight="2dp"/>
+        <ImageView android:id="@+id/guild_page_slid_right" android:background="@mipmap/guild_page_slide_default" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <Button android:textColor="#ffffffff" android:id="@+id/start_experience" android:background="@drawable/start_settings_button_selector" android:layout_width="150dp" android:layout_height="30dp" android:layout_marginBottom="13dp" android:text="@string/start_experience" android:layout_above="@+id/guild_page_indicator" android:layout_centerHorizontal="true"/>
+    <ImageView android:id="@+id/guild_page_image" android:layout_width="600dp" android:layout_height="280dp" android:layout_marginBottom="3dp" android:layout_above="@+id/start_experience" android:layout_centerHorizontal="true"/>
+    <TextView android:textColor="#ffffffff" android:id="@+id/guild_page_hint" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="15dp" android:layout_above="@+id/start_experience" android:layout_centerHorizontal="true"/>
+</RelativeLayout>

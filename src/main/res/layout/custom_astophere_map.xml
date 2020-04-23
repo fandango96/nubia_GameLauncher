@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+        <cn.nubia.gamelauncher.view.SimpleEditImageView android:id="@+id/image_edit" android:layout_width="match_parent" android:layout_height="240dp" android:scaleType="matrix"/>
+        <ImageView android:background="@mipmap/custom_astophere_mask" android:layout_width="match_parent" android:layout_height="240dp"/>
+    </FrameLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="12dp" android:textColor="#ffffffff" android:gravity="center" android:background="@mipmap/custom_button_ormal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/astophere_cancel"/>
+        <TextView android:textAppearance="?android:attr/textAppearanceMedium" android:textSize="12dp" android:textColor="#ffffffff" android:gravity="center" android:background="@mipmap/custom_button_ormal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="@string/astophere_apply"/>
+    </LinearLayout>
+</LinearLayout>

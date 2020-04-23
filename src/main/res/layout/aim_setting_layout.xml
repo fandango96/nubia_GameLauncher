@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:background="@mipmap/window_on_bg" android:layout_width="@dimen/aim_setting_layout_width" android:layout_height="@dimen/aim_setting_layout_expand_height" android:maxWidth="@dimen/aim_setting_layout_width">
+    <ImageButton android:id="@+id/btn_close" android:background="@null" android:layout_width="@dimen/close_btn_width" android:layout_height="@dimen/close_btn_height" android:layout_marginTop="2dp" android:layout_marginRight="8dp" android:src="@mipmap/close" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+    <TextView android:textSize="14dp" android:textColor="@color/title_color" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:text="@string/aim_helper" android:layout_centerHorizontal="true" style="@style/BoldFont"/>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="42dp" android:paddingHorizontal="@dimen/setting_horizontal_padding">
+        <RadioGroup android:id="@+id/radiogroup_on_off" style="@style/RadioGroupStyle">
+            <RadioButton android:id="@+id/rb_off" android:text="@string/off" style="@style/RadioButtonStyle"/>
+            <RadioButton android:id="@+id/rb_on" android:text="@string/on" style="@style/RadioButtonStyle"/>
+        </RadioGroup>
+    </LinearLayout>
+    <cn.nubia.gamelauncher.aimhelper.AimSettingView android:id="@+id/aim_setting_view" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_view_padding_top" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:paddingHorizontal="@dimen/setting_horizontal_padding"/>
+</RelativeLayout>
