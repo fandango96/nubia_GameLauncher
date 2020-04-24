@@ -2,27 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
     <TextView android:layout_marginTop="0dp" android:text="@string/style" style="@style/RowTitleStyle"/>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/style1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style1" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/style1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style1" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/style2" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style2" app:selected="true"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/style2" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style2" app:selected="true"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/style3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style3" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/style3" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style3" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/style4" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style4" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/style4" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style4" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/style5" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style5" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/style5" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/style5" app:selected="false"/>
     </LinearLayout>
     <TextView android:text="@string/color" style="@style/RowTitleStyle"/>
     <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/white" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/white" app:selected="true"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/white" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/white" app:selected="true"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/red" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/red" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/red" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/red" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/yellow" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/yellow" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/yellow" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/yellow" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/green" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/green" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/green" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/green" app:selected="false"/>
         <View android:layout_width="@dimen/style_button_padding" android:layout_height="1px"/>
-        <cn.nubia.gamelauncher.aimhelper.SelectableImageView android:id="@+id/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/blue" app:selected="false"/>
+        <cn.nubia.gamelauncherx.aimhelper.SelectableImageView
+            android:id="@+id/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" app:bg="@mipmap/blue" app:selected="false"/>
     </LinearLayout>
     <TextView android:layout_marginBottom="2dp" android:text="@string/size" style="@style/RowTitleStyle"/>
     <SeekBar android:id="@+id/seekbar" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100" android:progress="50" android:secondaryProgress="100" android:indeterminateOnly="false" android:progressDrawable="@drawable/seekbar_progress_drawable" android:thumb="@mipmap/seekbar_ball" android:thumbOffset="8dp" android:splitTrack="false" android:min="40"/>

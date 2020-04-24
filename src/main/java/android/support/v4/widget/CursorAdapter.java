@@ -13,7 +13,7 @@ import android.widget.BaseAdapter;
 import android.widget.Filter;
 import android.widget.FilterQueryProvider;
 import android.widget.Filterable;
-import cn.nubia.gamelauncher.db.AppAddProvider;
+import cn.nubia.gamelauncherx.db.AppAddProvider;
 
 public abstract class CursorAdapter extends BaseAdapter implements Filterable, CursorFilterClient {
     @Deprecated

@@ -8,5 +8,6 @@
             <RadioButton android:id="@+id/rb_on" android:text="@string/on" style="@style/RadioButtonStyle"/>
         </RadioGroup>
     </LinearLayout>
-    <cn.nubia.gamelauncher.aimhelper.AimSettingView android:id="@+id/aim_setting_view" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_view_padding_top" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:paddingHorizontal="@dimen/setting_horizontal_padding"/>
+    <cn.nubia.gamelauncherx.aimhelper.AimSettingView
+        android:id="@+id/aim_setting_view" android:visibility="visible" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/setting_view_padding_top" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:paddingHorizontal="@dimen/setting_horizontal_padding"/>
 </RelativeLayout>

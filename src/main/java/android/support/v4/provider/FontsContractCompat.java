@@ -31,7 +31,7 @@ import android.support.v4.util.LruCache;
 import android.support.v4.util.Preconditions;
 import android.support.v4.util.SimpleArrayMap;
 import android.widget.TextView;
-import cn.nubia.gamelauncher.db.AppAddProvider;
+import cn.nubia.gamelauncherx.db.AppAddProvider;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.lang.annotation.Retention;

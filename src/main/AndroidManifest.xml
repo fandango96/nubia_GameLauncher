@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="cn.nubia.gamelauncher">
+    package="cn.nubia.gamelauncherx">
     <uses-permission android:name="cn.nubia.launcher.permission.WRITE_SETTINGS"/>
     <uses-permission android:name="cn.nubia.launcher.permission.READ_SETTINGS"/>
     <uses-permission android:name="android.permission.DELETE_PACKAGES"
@@ -31,8 +31,8 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
         tools:ignore="ProtectedPermissions" />
-    <application android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="cn.nubia.gamelauncher.GameLauncherApplication" android:allowBackup="false" android:supportsRtl="true" android:usesCleartextTraffic="true" android:resizeableActivity="false" android:defaultToDeviceProtectedStorage="true" android:roundIcon="@mipmap/ic_launcher_round">
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.GameSpaceActivity" android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+    <application android:label="@string/app_name" android:icon="@mipmap/ic_launcher" android:name="cn.nubia.gamelauncherx.GameLauncherApplication" android:allowBackup="false" android:supportsRtl="true" android:usesCleartextTraffic="true" android:resizeableActivity="false" android:defaultToDeviceProtectedStorage="true" android:roundIcon="@mipmap/ic_launcher_round">
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.GameSpaceActivity" android:excludeFromRecents="true" android:launchMode="singleTask" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -40,44 +40,44 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.AppAddActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.AppAddActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.UninstallActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.UninstallActivity" android:excludeFromRecents="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.CustomAstophereMapActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.CustomAstophereMapActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.GameSpaceKeyHelperActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.GameSpaceKeyHelperActivity" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicDoubleHandleActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.RedMagicDoubleHandleActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicHandleLeftRightCalibrationActivity" android:exported="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.RedMagicHandleLeftRightCalibrationActivity" android:exported="true" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboard|keyboardHidden|navigation|orientation|screenSize"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="cn.nubia.gamelauncher.redhandle"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncher.activity.RedMagicHandleHelperActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
+        <activity android:theme="@style/GameSpaceTheme" android:name="cn.nubia.gamelauncherx.activity.RedMagicHandleHelperActivity" android:screenOrientation="landscape" android:configChanges="mcc|mnc|keyboardHidden|orientation|screenSize"
             tools:ignore="LockedOrientationActivity" />
-        <provider android:name="cn.nubia.gamelauncher.db.AppAddProvider" android:exported="true" android:authorities="cn.nubia.gamelauncher.db.AppAddProvider"
+        <provider android:name="cn.nubia.gamelauncherx.db.AppAddProvider" android:exported="true" android:authorities="cn.nubia.gamelauncherx.db.AppAddProvider"
             tools:ignore="ExportedContentProvider" />
-        <service android:name="cn.nubia.gamelauncher.service.TimerService" android:exported="false"/>
-        <meta-data android:name="cn.nubia.gamelauncher.recycler.GameGlideModule" android:value="GlideModule"/>
-        <service android:name="cn.nubia.gamelauncher.gamehandle.GameHandleService" android:exported="true"
+        <service android:name="cn.nubia.gamelauncherx.service.TimerService" android:exported="false"/>
+        <meta-data android:name="cn.nubia.gamelauncherx.recycler.GameGlideModule" android:value="GlideModule"/>
+        <service android:name="cn.nubia.gamelauncherx.gamehandle.GameHandleService" android:exported="true"
             tools:ignore="ExportedService" />
-        <receiver android:name="cn.nubia.gamelauncher.gamehandle.BluetoothReceiver" android:exported="true"
+        <receiver android:name="cn.nubia.gamelauncherx.gamehandle.BluetoothReceiver" android:exported="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>
                 <action android:name="cn.nubia.action.GAME_MODE"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="cn.nubia.gamelauncher.receiver.BuryReceiver" android:exported="true"
+        <receiver android:name="cn.nubia.gamelauncherx.receiver.BuryReceiver" android:exported="true"
             tools:ignore="ExportedReceiver">
             <intent-filter>
                 <action android:name="cn.nubia.owlsystem.firstbootdayaction"/>
             </intent-filter>
         </receiver>
-        <service android:name="cn.nubia.gamelauncher.aimhelper.AimService" android:enabled="true" android:exported="true"
+        <service android:name="cn.nubia.gamelauncherx.aimhelper.AimService" android:enabled="true" android:exported="true"
             tools:ignore="ExportedService">
             <intent-filter>
                 <action android:name="cn.nubia.gamelauncher.action.START_HELPER"/>

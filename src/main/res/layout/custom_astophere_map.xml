@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
     <FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content">
-        <cn.nubia.gamelauncher.view.SimpleEditImageView android:id="@+id/image_edit" android:layout_width="match_parent" android:layout_height="240dp" android:scaleType="matrix"/>
+        <cn.nubia.gamelauncherx.view.SimpleEditImageView
+            android:id="@+id/image_edit" android:layout_width="match_parent" android:layout_height="240dp" android:scaleType="matrix"/>
         <ImageView android:background="@mipmap/custom_astophere_mask" android:layout_width="match_parent" android:layout_height="240dp"/>
     </FrameLayout>
     <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">

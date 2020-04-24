@@ -10,7 +10,7 @@ import android.util.SparseIntArray;
 import android.util.Xml;
 import android.view.LayoutInflater;
 import android.view.View;
-import cn.nubia.gamelauncher.gamehandle.GameHandleConstant;
+import cn.nubia.gamelauncherx.gamehandle.GameHandleConstant;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;

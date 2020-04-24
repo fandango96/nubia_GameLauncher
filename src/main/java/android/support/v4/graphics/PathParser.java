@@ -5,7 +5,7 @@ import android.support.annotation.RestrictTo;
 import android.support.annotation.RestrictTo.Scope;
 import android.util.Log;
 import cn.nubia.commonui.widget.NubiaSearchView;
-import cn.nubia.gamelauncher.recycler.Anim3DHelper;
+import cn.nubia.gamelauncherx.recycler.Anim3DHelper;
 import java.util.ArrayList;
 
 @RestrictTo({Scope.LIBRARY_GROUP})
