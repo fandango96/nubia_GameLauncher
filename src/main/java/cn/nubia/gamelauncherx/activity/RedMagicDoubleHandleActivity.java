@@ -13,7 +13,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -30,6 +29,9 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
+
 import cn.nubia.commonui.app.AlertDialog;
 import cn.nubia.commonui.app.AlertDialog.Builder;
 import cn.nubia.commonui.widget.NubiaSearchView;
@@ -126,7 +128,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                     RedMagicDoubleHandleActivity.this.isConnectedTwo(RedMagicDoubleHandleActivity.this.mHandleTwoAddress);
                     RedMagicDoubleHandleActivity.this.dialogDismiss();
                     RedMagicDoubleHandleActivity.this.isConn2Handle();
-                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_gamehandle_connected), 0).show();
+                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_gamehandle_connected), Toast.LENGTH_SHORT).show();
                     return;
                 case 1:
                     if (RedMagicDoubleHandleActivity.this.handleAdapter != null) {
@@ -146,7 +148,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                         RedMagicDoubleHandleActivity.this.handleAdapter.setCheckedState(RedMagicDoubleHandleActivity.this.mGameHandleService.isConnected(address));
                         RedMagicDoubleHandleActivity.this.handleAdapter.notifyDataSetChanged();
                     }
-                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_waiting_for_binding), 0).show();
+                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_waiting_for_binding), Toast.LENGTH_SHORT).show();
                     return;
                 default:
                     return;
@@ -331,17 +333,17 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                         return;
                     }
                     if (RedMagicDoubleHandleActivity.this.countDown == 0) {
-                        Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_overtime_cancel_calibration), 1).show();
+                        Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_overtime_cancel_calibration), Toast.LENGTH_LONG).show();
                         RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.handleCalibrationTask);
                         RedMagicDoubleHandleActivity.this.dialogDismiss();
                         return;
                     }
-                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_calibration_complete), 0).show();
+                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_calibration_complete), Toast.LENGTH_SHORT).show();
                     RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.handleCalibrationTask);
                     RedMagicDoubleHandleActivity.this.dialogDismiss();
                     return;
                 case RedMagicDoubleHandleActivity.CONNECTING_OVER /*4004*/:
-                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_connecting_fail), 0).show();
+                    Toast.makeText(RedMagicDoubleHandleActivity.this, RedMagicDoubleHandleActivity.this.getString(R.string.handle_connecting_fail), Toast.LENGTH_SHORT).show();
                     RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.connectingTask);
                     if (RedMagicDoubleHandleActivity.this.handleAdapter != null) {
                         RedMagicDoubleHandleActivity.this.handleAdapter.setCheckedItem(-1);
@@ -382,7 +384,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         setContentView(R.layout.redmagic_double_handle_main);
         this.mContext = this;
         checkCTA();
-        bindService(new Intent(this, GameHandleService.class), this.mServiceConnection, 1);
+        bindService(new Intent(this, GameHandleService.class), this.mServiceConnection, Context.BIND_AUTO_CREATE);
         initView();
     }
 
@@ -518,13 +520,13 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         LogUtil.d(TAG, "[RedMagicDoubleHandleActivity] isConnectOne --> " + this.mGameHandleService.isConnected(this.mHandleOneAddress));
         if (this.mGameHandleService.isConnected(address)) {
             isConnDoubleHandle();
-            this.mHandleTwo.setVisibility(0);
+            this.mHandleTwo.setVisibility(View.VISIBLE);
             this.mHandleStareOne.setText(getString(R.string.handle_one_button_text));
             this.mHandleStareOne.setAlpha(0.85f);
             this.mRestChargeOne.setAlpha(0.85f);
             this.mHandleOne.setAlpha(0.85f);
-            this.mHandleTagBGImg.setVisibility(0);
-            if (this.mHandleThreeViewOne.getVisibility() == 0) {
+            this.mHandleTagBGImg.setVisibility(View.VISIBLE);
+            if (this.mHandleThreeViewOne.getVisibility() == View.VISIBLE) {
                 this.mHandleOne.setAlpha(1.0f);
             } else {
                 this.mHandleOne.setAlpha(0.5f);
@@ -535,8 +537,8 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
             this.mHandleRockerOne.setAlpha(1.0f);
             this.mHandleOneElectricText.setAlpha(0.85f);
             this.mChargeBGOne.setAlpha(1.0f);
-            this.mChargeIconOne.setVisibility(0);
-            this.mRestChargeOne.setVisibility(0);
+            this.mChargeIconOne.setVisibility(View.VISIBLE);
+            this.mRestChargeOne.setVisibility(View.VISIBLE);
             this.mGameHandleService.getBattery(this.mHandleOneAddress);
             this.mBluetoothConnectOne.setText(getString(R.string.handle_cancel_pair_button));
             this.mHandleCalibrationOne.setEnabled(true);
@@ -547,22 +549,22 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                 isConnectedTwo(this.mHandleTwoAddress);
             }
             if (this.mGameHandleService.isConnected(this.mHandleOneAddress) && this.mGameHandleService.isConnected(this.mHandleTwoAddress)) {
-                this.mLeftRightCalibrationBtn.setVisibility(0);
+                this.mLeftRightCalibrationBtn.setVisibility(View.VISIBLE);
                 this.mHandleOne.setText(getString(R.string.handle_left_handle));
                 this.mHandleTwo.setText(getString(R.string.handle_right_handle));
                 return;
             }
             return;
         }
-        this.mLeftRightCalibrationBtn.setVisibility(8);
-        this.mHandleTwo.setVisibility(8);
+        this.mLeftRightCalibrationBtn.setVisibility(View.GONE);
+        this.mHandleTwo.setVisibility(View.GONE);
         this.mHandleStareOne.setText(getString(R.string.handle_unconnected));
         this.mHandleStareOne.setAlpha(0.3f);
         this.mRestChargeOne.setAlpha(0.3f);
         if (!this.mGameHandleService.isConnected(this.mHandleTwoAddress)) {
-            this.mHandleTagBGImg.setVisibility(8);
+            this.mHandleTagBGImg.setVisibility(View.GONE);
         }
-        if (this.mHandleThreeViewOne.getVisibility() == 0) {
+        if (this.mHandleThreeViewOne.getVisibility() == View.VISIBLE) {
             this.mHandleOne.setAlpha(1.0f);
         } else {
             this.mHandleOne.setAlpha(0.5f);
@@ -575,7 +577,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mHandleRockerOne.setAlpha(0.5f);
         this.mHandleOneElectricText.setTextColor(getColor(R.color.handle_text_default_color));
         this.mChargeBGOne.setAlpha(0.3f);
-        this.mChargeIconOne.setVisibility(8);
+        this.mChargeIconOne.setVisibility(View.GONE);
         this.mRestChargeOne.setText("--%");
         this.mBluetoothConnectOne.setText(getString(R.string.handle_connect_button));
         this.mHandleCalibrationOne.setEnabled(false);
@@ -589,13 +591,13 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         LogUtil.d(TAG, "[RedMagicDoubleHandleActivity] isConnectTwo --> " + this.mGameHandleService.isConnected(this.mHandleTwoAddress));
         if (this.mGameHandleService.isConnected(this.mHandleTwoAddress)) {
             isConnDoubleHandle();
-            this.mHandleTwo.setVisibility(0);
+            this.mHandleTwo.setVisibility(View.VISIBLE);
             this.mHandleStareTwo.setText(getString(R.string.handle_two_button_text));
             this.mHandleStareTwo.setAlpha(0.85f);
             this.mRestChargeTwo.setAlpha(0.85f);
             this.mHandleTwo.setAlpha(0.85f);
-            this.mHandleTagBGImg.setVisibility(0);
-            if (this.mHandleThreeViewTwo.getVisibility() == 0) {
+            this.mHandleTagBGImg.setVisibility(View.VISIBLE);
+            if (this.mHandleThreeViewTwo.getVisibility() == View.VISIBLE) {
                 this.mHandleTwo.setAlpha(1.0f);
             } else {
                 this.mHandleTwo.setAlpha(0.5f);
@@ -606,8 +608,8 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
             this.mHandleRockerTwo.setAlpha(1.0f);
             this.mHandleTwoElectricText.setAlpha(0.85f);
             this.mChargeBGTwo.setAlpha(1.0f);
-            this.mChargeIconTwo.setVisibility(0);
-            this.mRestChargeTwo.setVisibility(0);
+            this.mChargeIconTwo.setVisibility(View.VISIBLE);
+            this.mRestChargeTwo.setVisibility(View.VISIBLE);
             this.mGameHandleService.getBattery(this.mHandleTwoAddress);
             this.mBluetoothConnectTwo.setText(getString(R.string.handle_cancel_pair_button));
             this.mHandleCalibrationTwo.setEnabled(true);
@@ -617,21 +619,21 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                 isConnectedOne(this.mHandleOneAddress);
             }
             if (this.mGameHandleService.isConnected(this.mHandleOneAddress) && this.mGameHandleService.isConnected(this.mHandleTwoAddress)) {
-                this.mLeftRightCalibrationBtn.setVisibility(0);
+                this.mLeftRightCalibrationBtn.setVisibility(View.VISIBLE);
                 this.mHandleOne.setText(getString(R.string.handle_left_handle));
                 this.mHandleTwo.setText(getString(R.string.handle_right_handle));
                 return;
             }
             return;
         }
-        this.mLeftRightCalibrationBtn.setVisibility(8);
+        this.mLeftRightCalibrationBtn.setVisibility(View.GONE);
         this.mHandleStareTwo.setText(getString(R.string.handle_unconnected));
         this.mHandleStareTwo.setAlpha(0.3f);
         this.mRestChargeTwo.setAlpha(0.3f);
         if (!this.mGameHandleService.isConnected(this.mHandleOneAddress)) {
-            this.mHandleTagBGImg.setVisibility(8);
+            this.mHandleTagBGImg.setVisibility(View.GONE);
         }
-        if (this.mHandleThreeViewTwo.getVisibility() == 0) {
+        if (this.mHandleThreeViewTwo.getVisibility() == View.VISIBLE) {
             this.mHandleTwo.setAlpha(1.0f);
         } else {
             this.mHandleTwo.setAlpha(0.5f);
@@ -644,7 +646,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mHandleRockerTwo.setAlpha(0.5f);
         this.mHandleTwoElectricText.setTextColor(getColor(R.color.handle_text_default_color));
         this.mChargeBGTwo.setAlpha(0.3f);
-        this.mChargeIconTwo.setVisibility(8);
+        this.mChargeIconTwo.setVisibility(View.GONE);
         this.mRestChargeTwo.setText("--%");
         this.mBluetoothConnectTwo.setText(getString(R.string.handle_connect_button));
         this.mHandleCalibrationTwo.setEnabled(false);
@@ -661,16 +663,16 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
             case R.id.handle_one_button /*2131689784*/:
                 LogUtil.d(TAG, "[RedMagicDoubleHandleActivity]  mHandleOne = " + this.mHandleOneAddress);
                 NubiaTrackManager.getInstance().sendEvent("cn.nubia.gamelauncher", "redmagic_handle_valuable_assistant_setting", "左右手", "左手");
-                this.mHandleThreeViewOne.setVisibility(0);
-                this.mHandleThreeViewTwo.setVisibility(8);
+                this.mHandleThreeViewOne.setVisibility(View.VISIBLE);
+                this.mHandleThreeViewTwo.setVisibility(View.GONE);
                 this.mHandleOne.setAlpha(1.0f);
                 this.mHandleTwo.setAlpha(0.5f);
                 return;
             case R.id.handle_two_button /*2131689785*/:
                 LogUtil.d(TAG, "[RedMagicDoubleHandleActivity]  mHandleTwo = " + this.mHandleTwoAddress);
                 NubiaTrackManager.getInstance().sendEvent("cn.nubia.gamelauncher", "redmagic_handle_valuable_assistant_setting", "左右手", "右手");
-                this.mHandleThreeViewOne.setVisibility(8);
-                this.mHandleThreeViewTwo.setVisibility(0);
+                this.mHandleThreeViewOne.setVisibility(View.GONE);
+                this.mHandleThreeViewTwo.setVisibility(View.VISIBLE);
                 this.mHandleOne.setAlpha(0.5f);
                 this.mHandleTwo.setAlpha(1.0f);
                 return;
@@ -722,7 +724,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
     private void startDiscovery() {
         LogUtil.d(TAG, " LocationEnable = " + isLocationEnable());
         if (!isLocationEnable()) {
-            Toast.makeText(this, getString(R.string.handle_open_gps), 1).show();
+            Toast.makeText(this, getString(R.string.handle_open_gps), Toast.LENGTH_LONG).show();
         } else if (requestPermission()) {
             startScanBluth();
         }
@@ -878,7 +880,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
     }
 
     private boolean isLocationEnable() {
-        return ((LocationManager) getSystemService("location")).isProviderEnabled("gps");
+        return ((LocationManager) getSystemService(Context.LOCATION_SERVICE)).isProviderEnabled("gps");
     }
 
     private boolean requestPermission() {
@@ -900,11 +902,10 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                     LogUtil.e(TAG, "permission granted!");
                     break;
                 } else {
-                    Toast.makeText(this, getString(R.string.handle_permission_position), 0).show();
+                    Toast.makeText(this, getString(R.string.handle_permission_position), Toast.LENGTH_SHORT).show();
                     LogUtil.e(TAG, "Location permissions need to be turned on!");
                     break;
                 }
-                break;
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
@@ -962,98 +963,98 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
             case 96:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionBottomTwo.setVisibility(0);
+                        this.mHandleDirectionBottomTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionBottomOne.setVisibility(0);
+                    this.mHandleDirectionBottomOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 97:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionRightTwo.setVisibility(0);
+                        this.mHandleDirectionRightTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionRightOne.setVisibility(0);
+                    this.mHandleDirectionRightOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case NubiaSearchView.MAX /*99*/:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionLeftTwo.setVisibility(0);
+                        this.mHandleDirectionLeftTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionLeftOne.setVisibility(0);
+                    this.mHandleDirectionLeftOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 100:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionUpTwo.setVisibility(0);
+                        this.mHandleDirectionUpTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionUpOne.setVisibility(0);
+                    this.mHandleDirectionUpOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 102:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleUpperButtonTwo_1.setVisibility(0);
+                        this.mHandleUpperButtonTwo_1.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleUpperButtonOne_1.setVisibility(0);
+                    this.mHandleUpperButtonOne_1.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 103:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleBottomButtonTwo_1.setVisibility(0);
+                        this.mHandleBottomButtonTwo_1.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleBottomButtonOne_1.setVisibility(0);
+                    this.mHandleBottomButtonOne_1.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 104:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleUpperButtonTwo_2.setVisibility(0);
+                        this.mHandleUpperButtonTwo_2.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleUpperButtonOne_2.setVisibility(0);
+                    this.mHandleUpperButtonOne_2.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 105:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleBottomButtonTwo_2.setVisibility(0);
+                        this.mHandleBottomButtonTwo_2.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleBottomButtonOne_2.setVisibility(0);
+                    this.mHandleBottomButtonOne_2.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 108:
                 if (deviceId == leftDeviceId) {
-                    this.mHandleDirectionStartOne.setVisibility(0);
+                    this.mHandleDirectionStartOne.setVisibility(View.VISIBLE);
                 } else if (deviceId == rightDeviceId) {
-                    this.mHandleDirectionStartTwo.setVisibility(0);
+                    this.mHandleDirectionStartTwo.setVisibility(View.VISIBLE);
                 }
-                Toast.makeText(this, getString(R.string.handle_quick_start_handle_setting), 0).show();
+                Toast.makeText(this, getString(R.string.handle_quick_start_handle_setting), Toast.LENGTH_SHORT).show();
                 break;
             default:
                 return super.onKeyDown(keyCode, event);
@@ -1076,99 +1077,99 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
             case 96:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionBottomTwo.setVisibility(4);
+                        this.mHandleDirectionBottomTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionBottomOne.setVisibility(4);
+                    this.mHandleDirectionBottomOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 97:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionRightTwo.setVisibility(4);
+                        this.mHandleDirectionRightTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionRightOne.setVisibility(4);
+                    this.mHandleDirectionRightOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case NubiaSearchView.MAX /*99*/:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionLeftTwo.setVisibility(4);
+                        this.mHandleDirectionLeftTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionLeftOne.setVisibility(4);
+                    this.mHandleDirectionLeftOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 100:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionUpTwo.setVisibility(4);
+                        this.mHandleDirectionUpTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionUpOne.setVisibility(4);
+                    this.mHandleDirectionUpOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 102:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleUpperButtonTwo_1.setVisibility(4);
+                        this.mHandleUpperButtonTwo_1.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleUpperButtonOne_1.setVisibility(4);
+                    this.mHandleUpperButtonOne_1.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 103:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleBottomButtonTwo_1.setVisibility(4);
+                        this.mHandleBottomButtonTwo_1.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleBottomButtonOne_1.setVisibility(4);
+                    this.mHandleBottomButtonOne_1.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 104:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleUpperButtonTwo_2.setVisibility(4);
+                        this.mHandleUpperButtonTwo_2.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleUpperButtonOne_2.setVisibility(4);
+                    this.mHandleUpperButtonOne_2.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 105:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleBottomButtonTwo_2.setVisibility(4);
+                        this.mHandleBottomButtonTwo_2.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleBottomButtonOne_2.setVisibility(4);
+                    this.mHandleBottomButtonOne_2.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 108:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
-                        this.mHandleDirectionStartTwo.setVisibility(4);
+                        this.mHandleDirectionStartTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionStartOne.setVisibility(4);
+                    this.mHandleDirectionStartOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;

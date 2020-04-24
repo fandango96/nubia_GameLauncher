@@ -12,15 +12,17 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+
+import androidx.core.app.ActivityCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.adapter.AstoPhereMapAdapter;
 import cn.nubia.gamelauncherx.bean.AppListItemBean;

@@ -2,23 +2,29 @@ package cn.nubia.gamelauncherx.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.support.v7.widget.RecyclerView.Adapter;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.view.SimpleEditImageView;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.target.ViewTarget;
+import com.bumptech.glide.request.transition.Transition;
+
 import java.util.List;
 
-public class AstoPhereMapAdapter extends Adapter<ViewHolder> {
+public class AstoPhereMapAdapter extends RecyclerView.Adapter<AstoPhereMapAdapter.ViewHolder>
+{
     public static final String ASSETS_PREFIX = "file:///android_asset/";
     /* access modifiers changed from: private */
     public Context mContext;
@@ -28,13 +34,13 @@ public class AstoPhereMapAdapter extends Adapter<ViewHolder> {
     public int mSelectedPosition;
     private List<String> mUrlList;
 
-    class ViewHolder extends android.support.v7.widget.RecyclerView.ViewHolder {
+    class ViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
         /* access modifiers changed from: private */
         public ImageView iconImageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            this.iconImageView = (ImageView) itemView.findViewById(R.id.entrance_image);
+            this.iconImageView = itemView.findViewById(R.id.entrance_image);
         }
     }
 
@@ -49,13 +55,16 @@ public class AstoPhereMapAdapter extends Adapter<ViewHolder> {
     }
 
     public void onBindViewHolder(ViewHolder holder, final int position) {
-        final String url = "file:///android_asset/" + ((String) this.mUrlList.get(position));
+        final String url = "file:///android_asset/" + this.mUrlList.get(position);
         fillImageView(holder, url, position);
         holder.iconImageView.setOnClickListener(new OnClickListener() {
             public void onClick(View v) {
                 try {
-                    Glide.with(AstoPhereMapAdapter.this.mContext).load(url).asBitmap().into((Target) new SimpleTarget<Bitmap>() {
-                        public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
+                    Glide.with(AstoPhereMapAdapter.this.mContext).asBitmap().load(url).into((Target) new SimpleTarget<Bitmap>() {
+                        @Override
+                        public void onResourceReady(@NonNull final Bitmap resource,
+                                @Nullable final Transition<? super Bitmap> transition)
+                        {
                             AstoPhereMapAdapter.this.mEditImageView.setBitmap(resource);
                         }
                     });
@@ -74,9 +83,12 @@ public class AstoPhereMapAdapter extends Adapter<ViewHolder> {
     }
 
     private void fillImageView(ViewHolder holder, String url, int position) {
-        Glide.with(this.mContext).load(url).override(108, 108).into((Target) new ViewTarget<ImageView, GlideDrawable>(holder.iconImageView) {
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                ((ImageView) this.view).setImageDrawable(resource);
+        Glide.with(this.mContext).load(url).override(108, 108).into((Target) new ViewTarget<ImageView, Drawable>(holder.iconImageView) {
+            @Override
+            public void onResourceReady(@NonNull final Drawable resource,
+                    @Nullable final Transition<? super Drawable> transition)
+            {
+                this.view.setImageDrawable(resource);
             }
         });
     }
@@ -86,6 +98,6 @@ public class AstoPhereMapAdapter extends Adapter<ViewHolder> {
     }
 
     public long getItemId(int position) {
-        return (long) position;
+        return position;
     }
 }

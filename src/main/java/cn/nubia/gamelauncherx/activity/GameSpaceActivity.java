@@ -15,13 +15,16 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings.Global;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.ViewStub;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import cn.nubia.gamelauncherx.GameLauncherApplication;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.aimhelper.AimService;
@@ -198,9 +201,9 @@ public class GameSpaceActivity extends BaseActivity {
             return super.onKeyDown(keyCode, event);
         }
         if (CommonUtil.isNX627J_Project() || CommonUtil.isNX651J_Project()) {
-            Toast.makeText(this, R.string.turn_off_game_button, 0).show();
+            Toast.makeText(this, R.string.turn_off_game_button, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, R.string.turn_off_game_button_redmagic, 0).show();
+            Toast.makeText(this, R.string.turn_off_game_button_redmagic, Toast.LENGTH_SHORT).show();
         }
         return true;
     }
@@ -278,7 +281,7 @@ public class GameSpaceActivity extends BaseActivity {
 
     public boolean dispatchTouchEvent(MotionEvent ev) {
         hideNavigationBar(true);
-        if (this.mVideoView == null || this.mVideoView.getVisibility() != 0) {
+        if (this.mVideoView == null || this.mVideoView.getVisibility() != View.VISIBLE) {
             switch (ev.getAction()) {
                 case 0:
                     Log.d("ky", "action_down touch_X = " + ev.getX() + "  touch_Y = " + ev.getY());
@@ -300,7 +303,7 @@ public class GameSpaceActivity extends BaseActivity {
         LogUtil.d(TAG, "---->playStartAnimation(s)");
         BannerManager.getInstance().setNeedDoTheFirstScroll(false);
         this.mVideoView = (MyVideoView) findViewById(R.id.start_animation_video_view);
-        this.mVideoView.setVisibility(0);
+        this.mVideoView.setVisibility(View.VISIBLE);
         this.mVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.start_animation));
         this.mVideoView.start();
         setAudioManagerParameters("begin");
@@ -334,7 +337,7 @@ public class GameSpaceActivity extends BaseActivity {
 
     private AudioManager getAudioManager() {
         if (this.mAudioManager == null) {
-            this.mAudioManager = (AudioManager) getSystemService("audio");
+            this.mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         }
         return this.mAudioManager;
     }
@@ -350,10 +353,10 @@ public class GameSpaceActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 Log.i("GameSpace", "ensure ViewView setVisible Gone");
-                if (GameSpaceActivity.this.mVideoView != null && GameSpaceActivity.this.mVideoView.getVisibility() != 8) {
+                if (GameSpaceActivity.this.mVideoView != null && GameSpaceActivity.this.mVideoView.getVisibility() != View.GONE) {
                     GameSpaceActivity.this.mSplashScreenEnd = true;
                     GameSpaceActivity.this.setAudioManagerParameters("end");
-                    GameSpaceActivity.this.mVideoView.setVisibility(8);
+                    GameSpaceActivity.this.mVideoView.setVisibility(View.GONE);
                     GameSpaceActivity.this.showContentPanel();
                     if (!GameSpaceActivity.this.mGameStateSwitchCtrl.getFirstStartGameSpaceValue()) {
                         GameSpaceActivity.this.cleanup();

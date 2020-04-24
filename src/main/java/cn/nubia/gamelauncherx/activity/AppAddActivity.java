@@ -1,14 +1,15 @@
 package cn.nubia.gamelauncherx.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.controller.AppListController;
 import cn.nubia.gamelauncherx.controller.AppListTopBarController;
 
 public class AppAddActivity extends BaseActivity {
     private AppListController mAddListController = null;
-    private AppListTopBarController mAppListTopBarController = null;
 
     /* access modifiers changed from: protected */
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -18,8 +19,8 @@ public class AppAddActivity extends BaseActivity {
     }
 
     private void initController() {
-        this.mAppListTopBarController = new AppListTopBarController();
-        this.mAppListTopBarController.init(this);
+        final AppListTopBarController appListTopBarController = new AppListTopBarController();
+        appListTopBarController.init(this);
         this.mAddListController = new AppListController();
         this.mAddListController.init(this);
     }

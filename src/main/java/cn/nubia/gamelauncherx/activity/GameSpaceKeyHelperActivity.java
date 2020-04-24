@@ -10,9 +10,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,6 +17,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.util.CommonUtil;
 import cn.nubia.gamelauncherx.util.LogUtil;
@@ -91,10 +92,10 @@ public class GameSpaceKeyHelperActivity extends BaseActivity {
             this.mGameSpaceSlideViewList.add(this.mGameSpaceSlide3);
             TextView tail_sub = (TextView) this.mGameSpaceSlide2.findViewById(R.id.tail_text_sub);
             ((TextView) this.mGameSpaceSlide2.findViewById(R.id.tail_text)).setText(R.string.game_space_function_string_slide_inter_0);
-            tail_sub.setVisibility(8);
+            tail_sub.setVisibility(View.GONE);
             TextView tail_sub2 = (TextView) this.mGameSpaceSlide3.findViewById(R.id.tail_text_sub);
             ((TextView) this.mGameSpaceSlide3.findViewById(R.id.tail_text)).setText(R.string.game_space_function_string_slide_inter_1);
-            tail_sub2.setVisibility(8);
+            tail_sub2.setVisibility(View.GONE);
             ImageView slid = (ImageView) this.mGameSpaceSlide2.findViewById(R.id.gamespace_slide2);
             if (CommonUtil.isNX651J_Project()) {
                 slid.setBackgroundResource(R.drawable.gamespace_key_help_inter_0_651);
@@ -149,10 +150,10 @@ public class GameSpaceKeyHelperActivity extends BaseActivity {
         this.mIndication2.setBackgroundResource(R.drawable.gamespace_navigation_default);
         this.mIndication3.setBackgroundResource(R.drawable.gamespace_navigation_default);
         if (CommonUtil.isInternalVersion()) {
-            this.mIndication2.setVisibility(8);
-            this.mIndication3.setVisibility(8);
+            this.mIndication2.setVisibility(View.GONE);
+            this.mIndication3.setVisibility(View.GONE);
         }
-        this.mViewPaper.setOnPageChangeListener(new OnPageChangeListener() {
+        this.mViewPaper.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageSelected(int position) {
                 switch (position % 4) {
                     case 0:

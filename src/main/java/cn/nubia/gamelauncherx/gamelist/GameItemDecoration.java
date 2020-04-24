@@ -1,12 +1,12 @@
 package cn.nubia.gamelauncherx.gamelist;
 
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 
-public class GameItemDecoration extends ItemDecoration {
+import androidx.recyclerview.widget.RecyclerView;
+
+public class GameItemDecoration extends RecyclerView.ItemDecoration
+{
     private int leftRight;
     private int topBottom;
 
@@ -15,7 +15,7 @@ public class GameItemDecoration extends ItemDecoration {
         this.topBottom = topBottom2;
     }
 
-    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, State state) {
+    public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
         outRect.left = this.leftRight;
         outRect.right = this.leftRight;

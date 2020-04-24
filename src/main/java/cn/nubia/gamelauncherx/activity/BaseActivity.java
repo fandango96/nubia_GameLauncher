@@ -1,12 +1,16 @@
 package cn.nubia.gamelauncherx.activity;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+
 import cn.nubia.gamelauncherx.gamehandle.GameHandleService;
 
+@SuppressLint("Registered")
 public class BaseActivity extends Activity {
     /* access modifiers changed from: protected */
     public void onCreate(@Nullable Bundle savedInstanceState) {
