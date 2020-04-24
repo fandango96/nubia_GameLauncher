@@ -5,15 +5,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.util.CommonUtil;
 import java.util.ArrayList;
@@ -138,7 +139,7 @@ public class RedMagicHandleHelperActivity extends BaseActivity {
         this.mIndication1.setBackgroundResource(R.drawable.gamespace_navigation_default);
         this.mIndication2.setBackgroundResource(R.drawable.gamespace_navigation_default);
         this.mIndication3.setBackgroundResource(R.drawable.gamespace_navigation_default);
-        this.mViewPaper.setOnPageChangeListener(new OnPageChangeListener() {
+        this.mViewPaper.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             public void onPageSelected(int position) {
                 switch (position % 4) {
                     case 0:

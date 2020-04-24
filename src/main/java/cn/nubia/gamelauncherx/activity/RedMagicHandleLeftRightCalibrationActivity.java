@@ -1,6 +1,7 @@
 package cn.nubia.gamelauncherx.activity;
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -80,7 +81,8 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
         requestWindowFeature(1);
         getWindow().setFlags(1024, 1024);
         setContentView(R.layout.handle_left_right_calibration_layout);
-        bindService(new Intent(this, GameHandleService.class), this.mServiceConnection, 1);
+        bindService(new Intent(this, GameHandleService.class), this.mServiceConnection,
+                Context.BIND_AUTO_CREATE);
         initView();
     }
 
@@ -108,8 +110,8 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
         this.mSharedPref = getSharedPreferences(GameHandleConstant.PREF_FILE_NAME, 0);
         this.mHandleOneAddress = this.mSharedPref.getString(GameHandleConstant.LEFT_HANDLE_ADDRESS, null);
         this.mHandleTwoAddress = this.mSharedPref.getString(GameHandleConstant.RIGHT_HANDLE_ADDRESS, null);
-        this.mResetCalibration.setVisibility(4);
-        this.mStartExperiencing.setVisibility(4);
+        this.mResetCalibration.setVisibility(View.INVISIBLE);
+        this.mStartExperiencing.setVisibility(View.INVISIBLE);
     }
 
     public void onClick(View view) {
@@ -141,12 +143,12 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
 
     private void resetLR() {
         this.mRelativeLayout.setBackground(getDrawable(R.drawable.handle_left_right_confirm_bg_default));
-        this.mSetSuccessIcon.setVisibility(8);
-        this.mLeftArrowImg.setVisibility(0);
-        this.mHandleRockerOne.setVisibility(8);
-        this.mHandleRockerTwo.setVisibility(8);
-        this.mResetCalibration.setVisibility(4);
-        this.mStartExperiencing.setVisibility(4);
+        this.mSetSuccessIcon.setVisibility(View.GONE);
+        this.mLeftArrowImg.setVisibility(View.VISIBLE);
+        this.mHandleRockerOne.setVisibility(View.GONE);
+        this.mHandleRockerTwo.setVisibility(View.GONE);
+        this.mResetCalibration.setVisibility(View.INVISIBLE);
+        this.mStartExperiencing.setVisibility(View.INVISIBLE);
         this.mCalibrationSuccessed.setText(getString(R.string.handle_left_right_describe_1));
         this.mEventDeviceId = -1;
         this.leftDeviceId = -1;
@@ -171,12 +173,12 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
         }
         this.mSharedPref.edit().putString(GameHandleConstant.LEFT_HANDLE_ADDRESS, this.mHandleOneAddress).apply();
         this.mSharedPref.edit().putString(GameHandleConstant.RIGHT_HANDLE_ADDRESS, this.mHandleTwoAddress).apply();
-        this.mHandleRockerOne.setVisibility(0);
-        this.mHandleRockerTwo.setVisibility(0);
-        this.mResetCalibration.setVisibility(0);
-        this.mStartExperiencing.setVisibility(0);
-        this.mLeftArrowImg.setVisibility(8);
-        this.mSetSuccessIcon.setVisibility(0);
+        this.mHandleRockerOne.setVisibility(View.VISIBLE);
+        this.mHandleRockerTwo.setVisibility(View.VISIBLE);
+        this.mResetCalibration.setVisibility(View.VISIBLE);
+        this.mStartExperiencing.setVisibility(View.VISIBLE);
+        this.mLeftArrowImg.setVisibility(View.GONE);
+        this.mSetSuccessIcon.setVisibility(View.VISIBLE);
         this.mCalibrationSuccessed.setText(getString(R.string.handle_left_right_describe_2));
     }
 
@@ -218,55 +220,55 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
             case 96:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionUpTwo.setVisibility(0);
+                        this.mHandleDirectionUpTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionBottomOne.setVisibility(0);
+                    this.mHandleDirectionBottomOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 97:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionLeftTwo.setVisibility(0);
+                        this.mHandleDirectionLeftTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionRightOne.setVisibility(0);
+                    this.mHandleDirectionRightOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case NubiaSearchView.MAX /*99*/:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionRightTwo.setVisibility(0);
+                        this.mHandleDirectionRightTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionLeftOne.setVisibility(0);
+                    this.mHandleDirectionLeftOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 100:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionBottomTwo.setVisibility(0);
+                        this.mHandleDirectionBottomTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionUpOne.setVisibility(0);
+                    this.mHandleDirectionUpOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
             case 108:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionStartTwo.setVisibility(0);
+                        this.mHandleDirectionStartTwo.setVisibility(View.VISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionStartOne.setVisibility(0);
+                    this.mHandleDirectionStartOne.setVisibility(View.VISIBLE);
                     break;
                 }
                 break;
@@ -283,55 +285,55 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
             case 96:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionUpTwo.setVisibility(4);
+                        this.mHandleDirectionUpTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionBottomOne.setVisibility(4);
+                    this.mHandleDirectionBottomOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 97:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionLeftTwo.setVisibility(4);
+                        this.mHandleDirectionLeftTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionRightOne.setVisibility(4);
+                    this.mHandleDirectionRightOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case NubiaSearchView.MAX /*99*/:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionRightTwo.setVisibility(4);
+                        this.mHandleDirectionRightTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionLeftOne.setVisibility(4);
+                    this.mHandleDirectionLeftOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 100:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionBottomTwo.setVisibility(4);
+                        this.mHandleDirectionBottomTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionUpOne.setVisibility(4);
+                    this.mHandleDirectionUpOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;
             case 108:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
-                        this.mHandleDirectionStartTwo.setVisibility(4);
+                        this.mHandleDirectionStartTwo.setVisibility(View.INVISIBLE);
                         break;
                     }
                 } else {
-                    this.mHandleDirectionStartOne.setVisibility(4);
+                    this.mHandleDirectionStartOne.setVisibility(View.INVISIBLE);
                     break;
                 }
                 break;

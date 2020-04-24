@@ -1,7 +1,9 @@
 package cn.nubia.gamelauncherx.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.controller.UninstallController;
 
