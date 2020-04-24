@@ -12,6 +12,7 @@ apply plugin: 'com.android.application'
 repositories {
     mavenCentral()
     jcenter()
+    google()
 }
 
 android {
@@ -31,5 +32,8 @@ android {
 }
 
 dependencies {
-    // some dependencies
+    implementation 'com.android.volley:volley:1.1.1'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
 }
