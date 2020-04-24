@@ -1,9 +1,10 @@
 buildscript {
     repositories {
+        google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:3.6.3'
     }
 }
 apply plugin: 'com.android.application'
@@ -14,15 +15,14 @@ repositories {
 }
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.1'
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId 'cn.nubia.gamelauncher'
-        minSdkVersion 9
-        targetSdkVersion 21
+        minSdkVersion 24
+        targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.2.05_0311"
     }
 
     lintOptions {
