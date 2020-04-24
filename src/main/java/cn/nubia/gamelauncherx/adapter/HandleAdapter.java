@@ -2,13 +2,15 @@ package cn.nubia.gamelauncherx.adapter;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
+
 import cn.nubia.commonui.actionbar.internal.widget.TintCheckBox;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.util.LogUtil;
@@ -77,18 +79,18 @@ public class HandleAdapter extends BaseAdapter {
         textView.setText(deviceName);
         if (position == this.selectIndex) {
             mViewHolder.mCheckbox.setChecked(this.isChecked);
-            mViewHolder.mCheckbox.setVisibility(0);
+            mViewHolder.mCheckbox.setVisibility(View.VISIBLE);
             mViewHolder.mHandleName.setTextColor(ContextCompat.getColor(this.mContext, R.color.handle_conn_ing));
-            mViewHolder.mConnecting.setVisibility(0);
+            mViewHolder.mConnecting.setVisibility(View.VISIBLE);
         } else {
             mViewHolder.mCheckbox.setChecked(false);
-            mViewHolder.mCheckbox.setVisibility(8);
+            mViewHolder.mCheckbox.setVisibility(View.GONE);
             mViewHolder.mHandleName.setTextColor(ContextCompat.getColor(this.mContext, R.color.handle_list_name));
-            mViewHolder.mConnecting.setVisibility(8);
+            mViewHolder.mConnecting.setVisibility(View.GONE);
         }
         if (mViewHolder.mCheckbox.isChecked() && this.isChecked) {
             mViewHolder.mHandleName.setTextColor(ContextCompat.getColor(this.mContext, R.color.handle_list_name));
-            mViewHolder.mConnecting.setVisibility(8);
+            mViewHolder.mConnecting.setVisibility(View.GONE);
         }
         return view;
     }

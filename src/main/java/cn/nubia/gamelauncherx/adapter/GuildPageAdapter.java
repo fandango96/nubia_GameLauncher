@@ -1,8 +1,5 @@
 package cn.nubia.gamelauncherx.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -10,19 +7,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.activity.GameSpaceActivity;
 import cn.nubia.gamelauncherx.util.CommonUtil;
 import java.util.ArrayList;
 
-public class GuildPageAdapter extends Adapter {
+public class GuildPageAdapter extends RecyclerView.Adapter
+{
     /* access modifiers changed from: private */
     public GameSpaceActivity mActivity;
     private ArrayList<Integer> mDataHint;
     private ArrayList<Integer> mDatas;
     GuidePageHolder mHasAddViewHolder;
 
-    class GuidePageHolder extends ViewHolder {
+    class GuidePageHolder extends RecyclerView.ViewHolder
+    {
         public ImageView guildPageImage;
         public ImageView guildPageItemWindowBg;
         public ImageView guildPageLeftSlid;
@@ -39,7 +42,7 @@ public class GuildPageAdapter extends Adapter {
             this.guildPageMidSlid = (ImageView) itemView.findViewById(R.id.guild_page_slid_mid);
             this.guildPageRightSlid = (ImageView) itemView.findViewById(R.id.guild_page_slid_right);
             if (CommonUtil.isInternalVersion()) {
-                this.guildPageRightSlid.setVisibility(8);
+                this.guildPageRightSlid.setVisibility(View.GONE);
             }
             this.guildPageStartExperience = (Button) itemView.findViewById(R.id.start_experience);
             this.guildPageItemWindowBg = (ImageView) itemView.findViewById(R.id.guild_page_window_bg);
@@ -52,11 +55,11 @@ public class GuildPageAdapter extends Adapter {
         this.mDataHint = dataHint;
     }
 
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int i) {
         return new GuidePageHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.guild_page_item_layout, parent, false));
     }
 
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         this.mHasAddViewHolder = (GuidePageHolder) holder;
         this.mHasAddViewHolder.guildPageImage.setBackgroundResource(((Integer) this.mDatas.get(position)).intValue());
         this.mHasAddViewHolder.guildPageTextView.setText(((Integer) this.mDataHint.get(position)).intValue());
@@ -64,14 +67,14 @@ public class GuildPageAdapter extends Adapter {
             public void onClick(View v) {
                 GuildPageAdapter.this.mActivity.showContentWithAnim();
                 GuildPageAdapter.this.mActivity.setFirstStartGameSpaceValue();
-                GuildPageAdapter.this.mHasAddViewHolder.itemView.setVisibility(8);
+                GuildPageAdapter.this.mHasAddViewHolder.itemView.setVisibility(View.GONE);
                 GuildPageAdapter.this.mActivity.setGuildPageRecyclerInVisible();
             }
         });
         if (position != this.mDatas.size() - 1) {
-            this.mHasAddViewHolder.guildPageStartExperience.setVisibility(4);
+            this.mHasAddViewHolder.guildPageStartExperience.setVisibility(View.INVISIBLE);
         } else {
-            this.mHasAddViewHolder.guildPageStartExperience.setVisibility(0);
+            this.mHasAddViewHolder.guildPageStartExperience.setVisibility(View.VISIBLE);
         }
         switch (position) {
             case 0:

@@ -1,8 +1,5 @@
 package cn.nubia.gamelauncherx.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +7,10 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.bean.AppListItemBean;
 import cn.nubia.gamelauncherx.commoninterface.IOnAppAddedListener;
@@ -17,7 +18,8 @@ import cn.nubia.gamelauncherx.commoninterface.OnSelectedCountChangeListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class HasAddAdapter extends Adapter {
+public class HasAddAdapter extends RecyclerView.Adapter
+{
     private int mAddAppCount = -1;
     String mAddedGameStr;
     private ArrayList<AppListItemBean> mList;
@@ -29,7 +31,8 @@ public class HasAddAdapter extends Adapter {
     /* access modifiers changed from: private */
     public int mType = 0;
 
-    class HasAddViewHolder extends ViewHolder {
+    class HasAddViewHolder extends RecyclerView.ViewHolder
+    {
         public ImageView appIcon;
         public TextView appName;
         /* access modifiers changed from: private */
@@ -78,15 +81,15 @@ public class HasAddAdapter extends Adapter {
     }
 
     @NonNull
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new HasAddViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.app_add_item_layout, parent, false));
     }
 
-    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final HasAddViewHolder hasAddViewHolder = (HasAddViewHolder) holder;
         if (this.mType == 0) {
             if (position == 0 || position == this.mAddAppCount) {
-                hasAddViewHolder.titleName.setVisibility(0);
+                hasAddViewHolder.titleName.setVisibility(View.VISIBLE);
                 this.mAddedGameStr = hasAddViewHolder.titleName.getContext().getString(R.string.added_games);
                 this.mNotAddedGameStr = hasAddViewHolder.titleName.getContext().getString(R.string.not_added_games);
                 hasAddViewHolder.titleName.setText(((position != 0 || this.mAddAppCount <= 0) ? this.mList.size() - this.mAddAppCount : this.mAddAppCount) + ((position != 0 || this.mAddAppCount <= 0) ? this.mNotAddedGameStr : this.mAddedGameStr));
@@ -96,21 +99,21 @@ public class HasAddAdapter extends Adapter {
                     this.mNotSelectedTextView = hasAddViewHolder.titleName;
                 }
             } else {
-                hasAddViewHolder.titleName.setVisibility(8);
+                hasAddViewHolder.titleName.setVisibility(View.GONE);
             }
             if (this.mAddAppCount <= 0 || position != this.mAddAppCount - 1) {
-                hasAddViewHolder.bottomLine.setVisibility(8);
+                hasAddViewHolder.bottomLine.setVisibility(View.GONE);
             } else {
-                hasAddViewHolder.bottomLine.setVisibility(0);
+                hasAddViewHolder.bottomLine.setVisibility(View.VISIBLE);
             }
-            hasAddViewHolder.radioButton.setVisibility(8);
-            hasAddViewHolder.switchBtn.setVisibility(0);
+            hasAddViewHolder.radioButton.setVisibility(View.GONE);
+            hasAddViewHolder.switchBtn.setVisibility(View.VISIBLE);
             hasAddViewHolder.switchBtn.setImageResource(((AppListItemBean) this.mList.get(position)).select ? R.mipmap.switch_button_press : R.mipmap.switch_button);
             doSwitchTextColorChange(hasAddViewHolder, position);
             hasAddViewHolder.switchBtn.setTag(this.mList.get(position));
         } else {
-            hasAddViewHolder.radioButton.setVisibility(0);
-            hasAddViewHolder.switchBtn.setVisibility(8);
+            hasAddViewHolder.radioButton.setVisibility(View.VISIBLE);
+            hasAddViewHolder.switchBtn.setVisibility(View.GONE);
             hasAddViewHolder.radioButton.setTag(this.mList.get(position));
             hasAddViewHolder.radioButton.setImageResource(((AppListItemBean) this.mList.get(position)).select ? R.mipmap.radio_select_button_press : R.mipmap.radio_select_button);
             hasAddViewHolder.radioButton.setOnClickListener(new OnClickListener() {
@@ -119,9 +122,9 @@ public class HasAddAdapter extends Adapter {
                 }
             });
             if (position == this.mList.size() - 1) {
-                hasAddViewHolder.bottomLine.setVisibility(0);
+                hasAddViewHolder.bottomLine.setVisibility(View.VISIBLE);
             } else {
-                hasAddViewHolder.bottomLine.setVisibility(8);
+                hasAddViewHolder.bottomLine.setVisibility(View.GONE);
             }
         }
         hasAddViewHolder.switchBtn.setOnClickListener(new OnClickListener() {
