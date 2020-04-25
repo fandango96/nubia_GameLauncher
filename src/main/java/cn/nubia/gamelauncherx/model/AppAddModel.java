@@ -131,7 +131,7 @@ public class AppAddModel implements IOnAppAddedListener, INeoGameChangeListener 
         WorkThread.runOnWorkThread(new Runnable() {
             public void run() {
                 try {
-                    AppAddModel.this.mLauncherApps = (LauncherApps) AppAddModel.this.mContex.getSystemService("launcherapps");
+                    AppAddModel.this.mLauncherApps = (LauncherApps) AppAddModel.this.mContex.getSystemService(Context.LAUNCHER_APPS_SERVICE);
                     LauncherApps launcherApps = AppAddModel.this.mLauncherApps;
                     AppAddModel appAddModel = AppAddModel.this;
                     PackageChangedCallback packageChangedCallback = new PackageChangedCallback();

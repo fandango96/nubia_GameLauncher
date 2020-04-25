@@ -186,6 +186,7 @@ public class AppAddModelHelper {
             }
             throw th;
         }
+        return false;
     }
 
     public boolean componentExistInUserRemoveDB(String componentName, ContentResolver resolver) {
@@ -214,6 +215,7 @@ public class AppAddModelHelper {
             }
             throw th;
         }
+        return false;
     }
 
     public ArrayList<String> getWillVerifyPackageList(ArrayList<AppListItemBean> list) {
