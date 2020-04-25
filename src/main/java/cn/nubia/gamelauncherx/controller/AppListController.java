@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.adapter.HasAddAdapter;
 import cn.nubia.gamelauncherx.bean.AppListItemBean;
@@ -40,7 +42,7 @@ public class AppListController {
         Log.i("lsm", "AppListController init");
         this.mContext = activity.getApplicationContext();
         this.mAppAddList = (RecyclerView) activity.findViewById(R.id.app_add_list);
-        this.mAppAddList.setLayoutManager(new LinearLayoutManager(this.mContext, 1, false));
+        this.mAppAddList.setLayoutManager(new LinearLayoutManager(this.mContext, RecyclerView.VERTICAL, false));
         this.mAppAddModel = AppAddModel.getInstance();
         if (this.mAppAddModel.getAppAddedList() == null || this.mAppAddModel.getAppNotAddList() == null) {
             Log.i("lsm", "AppListController init wait callback");
@@ -51,7 +53,7 @@ public class AppListController {
             initAdapter(this.mAppAddModel.getAppAddedList().size());
         }
         AppAddModel appAddModel = this.mAppAddModel;
-        AnonymousClass1 r1 = new IGetAppStatusDataCallBack() {
+        IGetAppStatusDataCallBack r1 = new IGetAppStatusDataCallBack() {
             public void onLoadAddAppListDone(ArrayList<AppListItemBean> list, int hasAddCount) {
                 AppListController.this.mList.clear();
                 AppListController.this.mList.addAll(list);

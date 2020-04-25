@@ -7,12 +7,14 @@ import android.os.AsyncTask;
 import android.os.IBinder;
 import android.os.Process;
 import android.os.UserHandle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.commonui.app.AlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.adapter.HasAddAdapter;
@@ -75,7 +77,7 @@ public class UninstallController implements OnSelectedCountChangeListener {
         });
         this.mMiddleTitle = (TextView) activity.findViewById(R.id.middle_name);
         this.mUninstallList = (RecyclerView) activity.findViewById(R.id.unintsall_list);
-        this.mUninstallList.setLayoutManager(new LinearLayoutManager(this.mContext, 1, false));
+        this.mUninstallList.setLayoutManager(new LinearLayoutManager(this.mContext, RecyclerView.VERTICAL, false));
         this.mAppAddModel = AppAddModel.getInstance();
         if (this.mAppAddModel.getAppAddedList() != null) {
             this.mList.clear();
@@ -97,7 +99,7 @@ public class UninstallController implements OnSelectedCountChangeListener {
         }
         updateButtonView(false);
         AppAddModel appAddModel = this.mAppAddModel;
-        AnonymousClass4 r1 = new IGetAppStatusDataCallBack() {
+        IGetAppStatusDataCallBack r1 = new IGetAppStatusDataCallBack() {
             public void onLoadAddAppListDone(ArrayList<AppListItemBean> list, int hasAddCount) {
                 UninstallController.this.mList.clear();
                 if (list != null && list.size() > 0) {
