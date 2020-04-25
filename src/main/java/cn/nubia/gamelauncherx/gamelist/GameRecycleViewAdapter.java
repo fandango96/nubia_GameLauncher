@@ -3,14 +3,15 @@ package cn.nubia.gamelauncherx.gamelist;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.activity.AppAddActivity;
 import cn.nubia.gamelauncherx.bean.NeoIconDownloadInfo;
@@ -19,7 +20,8 @@ import cn.nubia.gamelauncherx.util.CommonUtil;
 import java.util.HashMap;
 import java.util.List;
 
-public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
+public class GameRecycleViewAdapter extends RecyclerView.Adapter<GameRecycleViewAdapter.EntranceViewHolder>
+{
     /* access modifiers changed from: private */
     public List<GameEntranceItem> gameEntranceList;
     /* access modifiers changed from: private */
@@ -28,7 +30,8 @@ public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
     private HashMap<Integer, EntranceViewHolder> mNeoDownloadIconMap = new HashMap<>();
     private int mPageSize;
 
-    class EntranceViewHolder extends ViewHolder {
+    class EntranceViewHolder extends RecyclerView.ViewHolder
+    {
         /* access modifiers changed from: private */
         public ImageView entranceIconImageView;
         /* access modifiers changed from: private */
@@ -70,7 +73,7 @@ public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
                 public void onClick(View v) {
                     try {
                         Intent intent = new Intent(GameRecycleViewAdapter.this.mContext, AppAddActivity.class);
-                        intent.addFlags(268435456);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         GameRecycleViewAdapter.this.mContext.startActivity(intent);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -83,14 +86,14 @@ public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
             NeoIconDownloadInfo info = ((GameEntranceItem) this.gameEntranceList.get(pos)).info;
             this.mNeoDownloadIconMap.put(Integer.valueOf(info.app_id), holder);
             holder.neoContainerView.setTag(Integer.valueOf(info.app_id));
-            holder.neoContainerView.setVisibility(0);
-            holder.entranceNameTextView.setVisibility(8);
+            holder.neoContainerView.setVisibility(View.VISIBLE);
+            holder.entranceNameTextView.setVisibility(View.GONE);
             holder.neoEntranceNameTextView.setText(((GameEntranceItem) this.gameEntranceList.get(pos)).getName());
             holder.stateText.setText(CommonUtil.convertToShowStateText(info.status));
             holder.entranceIconImageView.setImageDrawable(new BitmapDrawable(info.processIcon));
         } else {
-            holder.neoContainerView.setVisibility(8);
-            holder.entranceNameTextView.setVisibility(0);
+            holder.neoContainerView.setVisibility(View.GONE);
+            holder.entranceNameTextView.setVisibility(View.VISIBLE);
             holder.entranceNameTextView.setText(((GameEntranceItem) this.gameEntranceList.get(pos)).getName());
             holder.entranceIconImageView.setImageDrawable(new BitmapDrawable(((GameEntranceItem) this.gameEntranceList.get(pos)).getImage()));
         }
@@ -102,7 +105,7 @@ public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
                 }
                 Intent intent = new Intent();
                 intent.setComponent(CommonUtil.createComponentName(((GameEntranceItem) GameRecycleViewAdapter.this.gameEntranceList.get(pos)).getComponetName()));
-                intent.addFlags(268435456);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 GameRecycleViewAdapter.this.mContext.startActivity(intent);
             }
         });
@@ -127,7 +130,7 @@ public class GameRecycleViewAdapter extends Adapter<EntranceViewHolder> {
     public void updateNeoDownloadIcon(NeoIconDownloadInfo info) {
         if (info != null && this.mNeoDownloadIconMap.containsKey(Integer.valueOf(info.app_id))) {
             EntranceViewHolder viewHolder = (EntranceViewHolder) this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id));
-            if (viewHolder.neoContainerView.getVisibility() == 0 && viewHolder.neoContainerView.getTag() != null && viewHolder.neoContainerView.getTag().equals(Integer.valueOf(info.app_id))) {
+            if (viewHolder.neoContainerView.getVisibility() == View.VISIBLE && viewHolder.neoContainerView.getTag() != null && viewHolder.neoContainerView.getTag().equals(Integer.valueOf(info.app_id))) {
                 viewHolder.stateText.setText(CommonUtil.convertToShowStateText(info.status));
                 viewHolder.entranceIconImageView.setImageDrawable(new BitmapDrawable(info.processIcon));
             }

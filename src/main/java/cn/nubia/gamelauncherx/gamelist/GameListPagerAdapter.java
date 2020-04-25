@@ -1,12 +1,15 @@
 package cn.nubia.gamelauncherx.gamelist;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+
 import java.util.List;
 
-public class GameListPagerAdapter extends PagerAdapter {
+public class GameListPagerAdapter extends PagerAdapter
+{
     private List<RecyclerView> mViewList;
 
     public GameListPagerAdapter(List<RecyclerView> mViewList2) {
