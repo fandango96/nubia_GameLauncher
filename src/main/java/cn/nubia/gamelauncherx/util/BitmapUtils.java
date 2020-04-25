@@ -20,8 +20,10 @@ import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewCompat;
 import android.util.Log;
+
+import androidx.core.view.ViewCompat;
+
 import cn.nubia.gamelauncherx.GameLauncherApplication;
 import cn.nubia.gamelauncherx.R;
 import java.io.ByteArrayOutputStream;

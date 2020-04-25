@@ -6,7 +6,6 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
-import android.os.SystemProperties;
 import android.text.TextUtils;
 import cn.nubia.gamelauncherx.GameLauncherApplication;
 import cn.nubia.gamelauncherx.R;
@@ -61,7 +60,7 @@ public class CommonUtil {
     }
 
     public static boolean isInternalVersion() {
-        return SystemProperties.getInt("sys.nubia_internal_version_flag", 0) == 1;
+        return true;
     }
 
     public static boolean isNX629J_Project() {

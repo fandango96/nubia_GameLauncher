@@ -18,9 +18,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.provider.Settings.Global;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.PagerSnapHelper;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +28,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.commonui.app.AlertDialog;
 import cn.nubia.commonui.app.AlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
@@ -260,13 +262,13 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
         this.mAddShortcut_627.setOnClickListener(this);
         this.mAddShortcutTips_627.setOnClickListener(this);
         if ((CommonUtil.isNX627J_Project() || CommonUtil.isNX651J_Project()) && hasShortcut(context)) {
-            this.mAddShortcut_627.setVisibility(8);
-            this.mAddShortcutTips_627.setVisibility(8);
+            this.mAddShortcut_627.setVisibility(View.GONE);
+            this.mAddShortcutTips_627.setVisibility(View.GONE);
         }
         if (CommonUtil.isNX629J_Project() || CommonUtil.isNX619J_Project() || CommonUtil.isNX659J_Project()) {
-            this.mAddShortcut_627.setVisibility(8);
-            this.mAddShortcutTips_627.setVisibility(8);
-            this.mGameExit.setVisibility(8);
+            this.mAddShortcut_627.setVisibility(View.GONE);
+            this.mAddShortcutTips_627.setVisibility(View.GONE);
+            this.mGameExit.setVisibility(View.GONE);
         }
         this.mShieldphone80 = (TextView) parentContainer.findViewById(R.id.shieldphone_text80);
         this.mShieldphone80.setOnClickListener(this);
@@ -300,39 +302,39 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
                 this.mViewMode80.setBackgroundResource(R.mipmap.switch_viewmode_card80);
             }
             if (CommonUtil.isNX651J_Project()) {
-                this.mCoolingFan80.setVisibility(8);
-                this.mShieldphone80.setVisibility(0);
+                this.mCoolingFan80.setVisibility(View.GONE);
+                this.mShieldphone80.setVisibility(View.VISIBLE);
             }
         } else {
-            this.mCoolingFan80.setVisibility(8);
-            this.mLaserWave80.setVisibility(8);
-            this.mGameSearch80.setVisibility(8);
-            this.mViewMode80.setVisibility(8);
-            this.mMagicLogo80.setVisibility(8);
-            this.mGamePlaza80.setVisibility(8);
-            this.mGameCenterHome80.setVisibility(8);
-            this.mHandleSettings80.setVisibility(8);
-            this.mPersonalCenter80.setVisibility(8);
+            this.mCoolingFan80.setVisibility(View.GONE);
+            this.mLaserWave80.setVisibility(View.GONE);
+            this.mGameSearch80.setVisibility(View.GONE);
+            this.mViewMode80.setVisibility(View.GONE);
+            this.mMagicLogo80.setVisibility(View.GONE);
+            this.mGamePlaza80.setVisibility(View.GONE);
+            this.mGameCenterHome80.setVisibility(View.GONE);
+            this.mHandleSettings80.setVisibility(View.GONE);
+            this.mPersonalCenter80.setVisibility(View.GONE);
         }
         if (CommonUtil.isInternalVersion()) {
             interGONE();
-            this.mAddShortcut_627.setVisibility(8);
-            this.mAddShortcutTips_627.setVisibility(8);
+            this.mAddShortcut_627.setVisibility(View.GONE);
+            this.mAddShortcutTips_627.setVisibility(View.GONE);
             return;
         }
         romGONE();
     }
 
     private void interGONE() {
-        this.mGameSearch80.setVisibility(8);
-        this.mGamePlaza80.setVisibility(8);
-        this.mGameCenterHome80.setVisibility(8);
+        this.mGameSearch80.setVisibility(View.GONE);
+        this.mGamePlaza80.setVisibility(View.GONE);
+        this.mGameCenterHome80.setVisibility(View.GONE);
     }
 
     private void romGONE() {
         if (CommonUtil.isNX651J_Project() && !CommonUtil.isInternalVersion()) {
-            this.mLaserWave80.setVisibility(8);
-            this.mNoDisturb80.setVisibility(0);
+            this.mLaserWave80.setVisibility(View.GONE);
+            this.mNoDisturb80.setVisibility(View.VISIBLE);
         }
     }
 
@@ -386,15 +388,15 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
         launcherIntent.addCategory("android.intent.category.LAUNCHER");
         addShortcutIntent.putExtra("android.intent.extra.shortcut.INTENT", launcherIntent);
         this.mContext.sendBroadcast(addShortcutIntent);
-        Toast.makeText(this.mActivity, this.mActivity.getString(R.string.add_shortcut_ok), 0).show();
-        this.mAddShortcut_627.setVisibility(8);
-        this.mAddShortcutTips_627.setVisibility(8);
+        Toast.makeText(this.mActivity, this.mActivity.getString(R.string.add_shortcut_ok), Toast.LENGTH_SHORT).show();
+        this.mAddShortcut_627.setVisibility(View.GONE);
+        this.mAddShortcutTips_627.setVisibility(View.GONE);
     }
 
     public void initGuildpageRecyclerView(Context context, View parentContainer) {
         this.mGuildPageRecyclerList = (RecyclerView) parentContainer.findViewById(R.id.guild_page_list);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this.mActivity);
-        layoutManager.setOrientation(0);
+        layoutManager.setOrientation(RecyclerView.HORIZONTAL);
         this.mGuildPageRecyclerList.setLayoutManager(layoutManager);
         new PagerSnapHelper().attachToRecyclerView(this.mGuildPageRecyclerList);
         ArrayList<Integer> mDatas = new ArrayList<>();
@@ -414,7 +416,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
     }
 
     public void setGuildPageRecyclerInVisible() {
-        this.mGuildPageRecyclerList.setVisibility(8);
+        this.mGuildPageRecyclerList.setVisibility(View.GONE);
     }
 
     public void onClick(View v) {
@@ -428,7 +430,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
                 addShortcut();
                 return;
             case R.id.add_shortcut_tips /*2131689610*/:
-                this.mAddShortcutTips_627.setVisibility(8);
+                this.mAddShortcutTips_627.setVisibility(View.GONE);
                 return;
             case R.id.shieldphone_text80 /*2131689669*/:
                 setShieldPhonemode();
@@ -568,7 +570,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
         });
         AlertDialog dialog = builder.create();
         dialog.show();
-        dialog.getWindow().setWindowAnimations(2131624188);
+        dialog.getWindow().setWindowAnimations(R.style.Theme_Nubia_Dialog);
     }
 
     private void startKeysHelperActivity() {
@@ -1031,7 +1033,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
             if (this.mIProcessManagerService == null) {
                 Intent intent = new Intent();
                 intent.setClassName("cn.nubia.processmanager", "cn.nubia.processmanager.service.ProcessManagerService");
-                this.mActivity.bindService(intent, this.mProcessServiceConnection, 1);
+                this.mActivity.bindService(intent, this.mProcessServiceConnection, Context.BIND_AUTO_CREATE);
             }
         } catch (Exception e) {
             e.printStackTrace();

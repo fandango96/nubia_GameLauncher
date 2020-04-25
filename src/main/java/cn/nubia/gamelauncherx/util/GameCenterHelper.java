@@ -18,8 +18,8 @@ public class GameCenterHelper {
             if (isWeekly) {
                 intent.putExtra("gcs_start_type", "summary_keyword_week");
             }
-            intent.addFlags(268435456);
-            intent.addFlags(536870912);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
             context.startActivity(intent);
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,8 +56,8 @@ public class GameCenterHelper {
     public static void startGameCenterActivity(Context context, String data) {
         ReflectUtilities.requestCPUBoost();
         Intent intent = new Intent();
-        intent.addFlags(268435456);
-        intent.addFlags(32768);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.setAction("android.intent.action.VIEW");
         intent.setData(Uri.parse(data));
         if (!CommonUtil.isNX627J_Project() || !clickGameCenter(context, intent)) {

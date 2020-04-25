@@ -23,7 +23,7 @@ public class HTTPUtils {
         for (String key : keySet) {
             Object value = treeMap.get(key);
             if (value instanceof List) {
-                List<Object> list = (List) value;
+                List<String> list = (List) value;
                 Collections.sort(list);
                 for (Object object : list) {
                     sb.append(key).append("=").append(String.valueOf(object));

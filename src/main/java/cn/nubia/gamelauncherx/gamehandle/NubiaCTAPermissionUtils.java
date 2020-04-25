@@ -81,7 +81,7 @@ public class NubiaCTAPermissionUtils {
             });
             NubiaCenterAlertDialog dialog = builder.create();
             dialog.show();
-            dialog.getWindow().setWindowAnimations(R.style.NubiaDialog_AlertInCenter);
+            dialog.getWindow().setWindowAnimations(R.style.Theme_Nubia_Dialog);
         }
     }
 

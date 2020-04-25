@@ -26,11 +26,11 @@
         <item name="android:windowEnterAnimation">@anim/nubia_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/nubia_dialog_exit</item>
     </style>
-    <style name="NubiaDialog" parent="android:Animation">
+    <style name="Animation.NubiaDialog">
         <item name="android:windowEnterAnimation">@anim/nubia_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/nubia_dialog_exit</item>
     </style>
-    <style name="NubiaDialog.AlertInCenter">
+    <style name="Animation.NubiaDialog.AlertInCenter">
         <item name="android:windowEnterAnimation">@anim/nubia_center_alert_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/nubia_center_alert_dialog_exit</item>
     </style>

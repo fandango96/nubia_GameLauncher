@@ -191,7 +191,7 @@ public class NubiaTrackManager {
         Intent intent = new Intent();
         intent.setComponent(new ComponentName("cn.nubia.owlsystem", "cn.nubia.applearning.datacollection.DataCollectionService"));
         if (this.mContext != null) {
-            this.mContext.bindService(intent, this.mConn, 1);
+            this.mContext.bindService(intent, this.mConn, Context.BIND_AUTO_CREATE);
         }
     }
 
