@@ -12,7 +12,7 @@ public class TimerServiceStatus {
     private static TimerServiceStatus mInstance;
     private ServiceConnection cnn = new ServiceConnection() {
         public void onServiceConnected(ComponentName name, IBinder service) {
-            TimerServiceStatus.this.mTimerService = ((ServiceBinder) service).getService();
+            TimerServiceStatus.this.mTimerService = ((TimerService.ServiceBinder) service).getService();
             if (TimerServiceStatus.this.mCallbacks != null && TimerServiceStatus.this.mCallbacks.get() != null) {
                 TimerServiceStatus.this.mTimerService.setCallbacks((Callbacks) TimerServiceStatus.this.mCallbacks.get());
                 ((Callbacks) TimerServiceStatus.this.mCallbacks.get()).updateTimerView(TimerServiceStatus.this.mTimerService.getTime());
@@ -38,7 +38,7 @@ public class TimerServiceStatus {
 
     public void setServiceStatus(Context context, boolean isStared) {
         if (isStared) {
-            this.isServiceStarted = context.getApplicationContext().bindService(new Intent(context, TimerService.class), this.cnn, 1);
+            this.isServiceStarted = context.getApplicationContext().bindService(new Intent(context, TimerService.class), this.cnn, Context.BIND_AUTO_CREATE);
         } else {
             this.isServiceStarted = false;
         }
@@ -51,7 +51,7 @@ public class TimerServiceStatus {
     public TimerService getTimerService(Context context) {
         if (this.mTimerService == null) {
             Context appContext = context.getApplicationContext();
-            appContext.bindService(new Intent(appContext, TimerService.class), this.cnn, 1);
+            appContext.bindService(new Intent(appContext, TimerService.class), this.cnn, Context.BIND_AUTO_CREATE);
         }
         return this.mTimerService;
     }

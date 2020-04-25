@@ -9,7 +9,9 @@ import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
+
 import cn.nubia.gamelauncherx.util.TimerServiceUtil;
 import java.util.Date;
 
@@ -92,7 +94,7 @@ public class TimerService extends Service {
     }
 
     public int onStartCommand(@Nullable Intent intent, int flags, int startId) {
-        return 1;
+        return Service.START_STICKY;
     }
 
     public void holdDatas() {
