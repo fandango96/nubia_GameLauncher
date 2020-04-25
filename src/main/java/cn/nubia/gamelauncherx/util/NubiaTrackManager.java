@@ -1,5 +1,6 @@
 package cn.nubia.gamelauncherx.util;
 
+import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.RemoteException;
 
 public class NubiaTrackManager {
     private static final String TAG = "NubiaTrackManager";
@@ -67,6 +69,49 @@ public class NubiaTrackManager {
          */
         /* Code decompiled incorrectly, please refer to instructions dump. */
         public void handleMessage(android.os.Message r5) {
+            switch (r5.what) {
+                case 1:
+                    if (!ActivityManager.isUserAMonkey()) {
+                        synchronized (sTrackThread) {
+                            if (!isConn || mService == null) {
+                                bindServiceInvoked();
+                                try
+                                {
+                                    sTrackThread.wait();
+                                }
+                                catch (InterruptedException e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            }
+                            if (isConn && mService != null) {
+                                try
+                                {
+                                    mService.send(r5);
+                                }
+                                catch (RemoteException e)
+                                {
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+                    break;
+                case 2:
+                    synchronized (sTrackThread) {
+                        if (isConn) {
+                            mService = null;
+                            isConn = false;
+                        }
+                    }
+                    if (mContext != null) {
+                        mContext.unbindService(mConn);
+                    }
+                    break;
+                default:
+                    super.handleMessage(r5);
+                    break;
+            }
             /*
                 r4 = this;
                 int r1 = r5.what
@@ -158,7 +203,6 @@ public class NubiaTrackManager {
                 r0.printStackTrace()
                 goto L_0x0008
             */
-            throw new UnsupportedOperationException("Method not decompiled: cn.nubia.gamelauncher.util.NubiaTrackManager.TrackHandler.handleMessage(android.os.Message):void");
         }
     }
 
@@ -221,6 +265,16 @@ public class NubiaTrackManager {
      */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public void unbindServiceInvoked() {
+        synchronized (sTrackThread) {
+            if (isConn) {
+                mService = null;
+                isConn = false;
+            }
+        }
+        if (mContext != null) {
+            mContext.unbindService(mConn);
+            mContext = null;
+        }
         /*
             r4 = this;
             r3 = 0
@@ -254,7 +308,6 @@ public class NubiaTrackManager {
             r0.printStackTrace()
             goto L_0x001c
         */
-        throw new UnsupportedOperationException("Method not decompiled: cn.nubia.gamelauncher.util.NubiaTrackManager.unbindServiceInvoked():void");
     }
 
     public void sendEvent(String pkgName, String event) {
