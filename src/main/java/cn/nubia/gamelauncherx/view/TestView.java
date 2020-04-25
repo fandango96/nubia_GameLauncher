@@ -10,6 +10,6 @@ public class TestView extends View {
 
     public void setVisibility(int visibility) {
         super.setVisibility(visibility);
-        setVisibility(4);
+        setVisibility(INVISIBLE);
     }
 }

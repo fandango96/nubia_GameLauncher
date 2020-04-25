@@ -12,15 +12,16 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
-import android.support.graphics.drawable.PathInterpolatorCompat;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.animation.PathInterpolator;
+
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.vectordrawable.graphics.drawable.PathInterpolatorCompat;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.bean.CircleBean;
 import cn.nubia.gamelauncherx.recycler.Anim3DHelper;
@@ -82,7 +83,7 @@ public class BgRotateAnimView extends SurfaceView implements Callback, BannerMan
     private float mScaleZ;
     /* access modifiers changed from: private */
     public boolean mScrollDirectionChanged;
-    private final OnScrollListener mScrollListener;
+    private final RecyclerView.OnScrollListener mScrollListener;
     private long mStartTime;
 
     private class DrawRunnable implements Runnable {
@@ -161,7 +162,8 @@ public class BgRotateAnimView extends SurfaceView implements Callback, BannerMan
                     LiftHelper.this.setState(1);
                     LiftHelper.this.mRiseDistance = 0.0f;
                     LiftHelper.this.mLiftStartTime = System.currentTimeMillis();
-                    LiftHelper.this.mLiftDuration = (long) (LiftHelper.this.mRandom.nextInt(PathInterpolatorCompat.MAX_NUM_POINTS) + 800);
+                    LiftHelper.this.mLiftDuration = (long) (LiftHelper.this.mRandom.nextInt(
+                            PathInterpolatorCompat.MAX_NUM_POINTS) + 800);
                 }
             }
         };
@@ -263,7 +265,7 @@ public class BgRotateAnimView extends SurfaceView implements Callback, BannerMan
         this.mRotateEvenlyDirection = -1;
         this.mScrollDirectionChanged = false;
         this.mPathInterpolator = Anim3DHelper.DEFAULT_ANIM_PATH_INTERPOLATOR;
-        this.mScrollListener = new OnScrollListener() {
+        this.mScrollListener = new RecyclerView.OnScrollListener() {
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 switch (newState) {
@@ -369,7 +371,7 @@ public class BgRotateAnimView extends SurfaceView implements Callback, BannerMan
     }
 
     private void doFirstStartThing() {
-        setVisibility(0);
+        setVisibility(VISIBLE);
         doAlphaAnimator();
         startAnim();
         BannerManager.getInstance().postBgRotateRunnableDelayed(new Runnable() {
