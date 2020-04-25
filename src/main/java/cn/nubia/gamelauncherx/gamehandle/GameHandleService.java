@@ -15,6 +15,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.hardware.input.InputManager;
+import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -192,8 +193,14 @@ public class GameHandleService extends Service implements GameHandleListener {
         registerReceiver(this.mReceiver, filter);
         if (CommonUtil.isInternalVersion() && CommonUtil.isRedMagicPhone()) {
             this.mNotificationChannelName = getString(R.string.handle_service_tips);
-            ((NotificationManager) getSystemService("notification")).createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, this.mNotificationChannelName, 3));
-            this.mNotification = new Builder(this, NOTIFICATION_CHANNEL_ID).setSmallIcon(R.mipmap.ic_launcher).setContentTitle(getString(R.string.app_name)).setContentText(getString(R.string.handle_service_tips)).build();
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            {
+                ((NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE)).createNotificationChannel(new NotificationChannel(NOTIFICATION_CHANNEL_ID, this.mNotificationChannelName, NotificationManager.IMPORTANCE_DEFAULT));
+            }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+            {
+                this.mNotification = new Builder(this, NOTIFICATION_CHANNEL_ID).setSmallIcon(R.mipmap.ic_launcher).setContentTitle(getString(R.string.app_name)).setContentText(getString(R.string.handle_service_tips)).build();
+            }
             startForeground(1001, this.mNotification);
         }
         getSystemConnected();
@@ -259,7 +266,7 @@ public class GameHandleService extends Service implements GameHandleListener {
         } else {
             handleNullIntent();
         }
-        return 1;
+        return Service.START_STICKY;
     }
 
     private void isDoubleHandle() {
@@ -523,7 +530,7 @@ public class GameHandleService extends Service implements GameHandleListener {
     public static int getGamePadDeviceId(Context context, String address) {
         int gamepadDeviceId = -1;
         try {
-            InputManager inputManager = (InputManager) context.getSystemService("input");
+            InputManager inputManager = (InputManager) context.getSystemService(Context.INPUT_SERVICE);
             return ((Integer) InputManager.class.getDeclaredMethod("getGamepadDeviceId", new Class[]{String.class}).invoke(inputManager, new Object[]{address})).intValue();
         } catch (Exception e) {
             e.printStackTrace();

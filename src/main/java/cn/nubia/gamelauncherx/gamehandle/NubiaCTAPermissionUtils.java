@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
-import android.os.SystemProperties;
 import android.provider.Settings.Global;
 import android.util.Log;
 import cn.nubia.commonui.app.NubiaCenterAlertDialog;
@@ -26,9 +25,6 @@ public class NubiaCTAPermissionUtils {
     private static final String VIRTUAL_GAME_KEY = "virtual_game_key";
 
     public static boolean isCTAOK(Context context) {
-        if (SystemProperties.getInt(CTA_PERSIST, 0) != 0) {
-            return true;
-        }
         SharedPreferences CTASetting = context.getSharedPreferences("data", 0);
         Log.d("KongYuan3", " CTASetting 1 = " + CTASetting.getBoolean(CTA_PERMISSION, false));
         return CTASetting.getBoolean(CTA_PERMISSION, false);
@@ -85,7 +81,7 @@ public class NubiaCTAPermissionUtils {
             });
             NubiaCenterAlertDialog dialog = builder.create();
             dialog.show();
-            dialog.getWindow().setWindowAnimations(2131624188);
+            dialog.getWindow().setWindowAnimations(R.style.NubiaDialog_AlertInCenter);
         }
     }
 

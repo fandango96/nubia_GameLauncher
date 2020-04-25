@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.provider.Settings.Global;
 import cn.nubia.gamelauncherx.aimhelper.AimService;
 import cn.nubia.gamelauncherx.util.BuildDeviceUtil;
@@ -32,7 +33,10 @@ public class BluetoothReceiver extends BroadcastReceiver {
                     LogUtil.w(TAG, "start MyService error, " + e.getMessage());
                 }
             } else {
-                context.startForegroundService(intent);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
+                {
+                    context.startForegroundService(intent);
+                }
                 if (BuildDeviceUtil.isAndroidQ()) {
                 }
             }
