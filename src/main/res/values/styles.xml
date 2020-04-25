@@ -1277,41 +1277,6 @@
         <item name="shadowDivider">@drawable/nubia_shadow_divider</item>
         <item name="throughDivider">@drawable/nubia_list_divider_through</item>
     </style>
-    <style name="Theme.Nubia.ActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:statusBarColor">@color/nubia_status_bar_color</item>
-        <item name="actionModeCloseTextColor">@color/nubia_text_view_material_light_closed</item>
-        <item name="fakeStatusBarBackground">@android:color/transparent</item>
-        <item name="actionBarTabTextStyle">@style/Widget.Nubia.ActionBar.TabText</item>
-        <item name="actionBarStyle">@style/Widget.v7.ActionBar.Solid</item>
-        <item name="actionBarSplitStyle">@style/Widget.v7.actionBarSplit</item>
-        <item name="actionBarTheme">@null</item>
-        <item name="actionBarSize">@dimen/nubia_action_bar_default_height</item>
-        <item name="actionBarItemBackground">@null</item>
-        <item name="actionMenuTextAppearance">@style/TextAppearance.Nubia.Widget.ActionBar.Menu</item>
-        <item name="actionMenuTextColor">?android:attr/textColorSecondary</item>
-        <item name="actionModeStyle">@style/Widget.v7.ActionMode</item>
-        <item name="actionModeBackground">@drawable/nubia_ab_solid_light_material</item>
-        <item name="actionModeSplitBackground">@drawable/nubia_ab_solid_light_material_bottom</item>
-        <item name="actionModeCloseDrawable">@layout/nubia_action_mode_close_item</item>
-        <item name="homeAsUpIndicator">@drawable/nubia_ic_ab_back_material_new</item>
-    </style>
-    <style name="Theme.Nubia.ActionBar.BlurEffect">
-        <item name="actionBarStyle">@style/Widget.v7.ActionBar.BlurEffect</item>
-        <item name="homeAsUpIndicator">@drawable/nubia_ic_ab_back_actionbar_blureffect</item>
-    </style>
-    <style name="Theme.Nubia.ActionBar.Dark">
-        <item name="actionModeCloseTextColor">@color/nubia_primary_text_default_material_dark</item>
-        <item name="actionBarStyle">@style/Widget.v7.ActionBar.Solid.Dark</item>
-        <item name="actionBarSplitStyle">@style/Widget.v7.actionBarSplit.Dark</item>
-        <item name="actionMenuTextColor">@color/nubia_primary_text_default_material_dark</item>
-        <item name="actionModeStyle">@style/Widget.v7.ActionMode.Dark</item>
-        <item name="homeAsUpIndicator">@drawable/nubia_ic_ab_back_material_dark_new</item>
-        <item name="menuItemBackground">@drawable/nubia_menu_item_background_dark</item>
-    </style>
-    <style name="Theme.Nubia.ActionBar.Tab">
-        <item name="actionBarStyle">@style/Widget.v7.ActionBar.Tab</item>
-    </style>
     <style name="Theme.Nubia.BlurEffect">
         <item name="android:actionBarStyle">@style/Widget.Nubia.ActionBar.BlurEffect</item>
         <item name="android:homeAsUpIndicator">@drawable/nubia_ic_ab_back_actionbar_blureffect</item>
