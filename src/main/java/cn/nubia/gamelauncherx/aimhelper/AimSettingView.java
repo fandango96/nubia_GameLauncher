@@ -2,7 +2,6 @@ package cn.nubia.gamelauncherx.aimhelper;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +12,9 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+
 import cn.nubia.gamelauncherx.R;
 
 public class AimSettingView extends LinearLayout {

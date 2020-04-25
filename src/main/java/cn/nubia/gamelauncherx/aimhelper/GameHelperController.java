@@ -24,7 +24,8 @@ import cn.nubia.gamelauncherx.util.ToastUtil;
 import java.util.Iterator;
 import java.util.Set;
 
-public class GameHelperController implements TopActivityMonitorCallback {
+public class GameHelperController implements TopActivityMonitor.TopActivityMonitorCallback
+{
     public static final String ACTION_CLOSE_AIM_HELPER = "cn.nubia.gamelauncher.action.delay_close_aim_helper_for_package";
     private static final int ALARM_REQUEST_CODE_DELAY_CLOSE_AIM_HELPER = 1;
     private static final long CLOSE_AIM_HELPER_DELAY_MS = 20000;
@@ -152,7 +153,7 @@ public class GameHelperController implements TopActivityMonitorCallback {
         boolean z2 = false;
         LogUtil.d(TAG, "GameHelperController onCreate");
         this.mContext = context;
-        this.windowManager = (WindowManager) this.mContext.getSystemService("window");
+        this.windowManager = (WindowManager) this.mContext.getSystemService(Context.WINDOW_SERVICE);
         int gameKeys = ReflectUtilities.getGameModeDBValue(this.mContext);
         if ((gameKeys & 1) != 0) {
             z = true;
@@ -213,7 +214,7 @@ public class GameHelperController implements TopActivityMonitorCallback {
             Intent intent = new Intent();
             intent.setAction("android.settings.action.MANAGE_OVERLAY_PERMISSION");
             intent.setData(Uri.parse("package:" + this.mContext.getPackageName()));
-            intent.addFlags(268435456);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.mContext.startActivity(intent);
         }
     }
@@ -318,11 +319,11 @@ public class GameHelperController implements TopActivityMonitorCallback {
     }
 
     private void cancelDeleteCloseAimHelperForPackage(String packageName) {
-        AlarmManager alarmManager = (AlarmManager) this.mContext.getSystemService("alarm");
+        AlarmManager alarmManager = (AlarmManager) this.mContext.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(ACTION_CLOSE_AIM_HELPER + packageName);
         intent.setComponent(new ComponentName(this.mContext, AimService.class));
         intent.putExtra("package", packageName);
-        alarmManager.cancel(PendingIntent.getService(this.mContext, 1, intent, 134217728));
+        alarmManager.cancel(PendingIntent.getService(this.mContext, 1, intent, PendingIntent.FLAG_UPDATE_CURRENT));
         LogUtil.d(TAG, "cancelDeleteCloseAimHelperForPackage " + packageName);
     }
 

@@ -669,4 +669,9 @@
     </attr>
     <attr name="maxHeightRatio" format="reference|float">
     </attr>
+    <declare-styleable name="SelectableImageView">
+        <attr name="bg" format="reference" />
+        <attr name="selected" format="boolean" />
+        <attr name="text" format="string" />
+    </declare-styleable>
 </resources>

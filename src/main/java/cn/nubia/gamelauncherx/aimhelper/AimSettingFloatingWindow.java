@@ -29,7 +29,7 @@ public class AimSettingFloatingWindow {
 
     public AimSettingFloatingWindow(Context context, GameHelperController gameHelperController) {
         this.mContext = context;
-        this.mWindowManager = (WindowManager) context.getSystemService("window");
+        this.mWindowManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         this.mGameHelperController = gameHelperController;
     }
 
@@ -89,7 +89,7 @@ public class AimSettingFloatingWindow {
                 }
             });
             this.mContentView.setBackgroundResource(isOn ? R.mipmap.window_on_bg : R.mipmap.window_off_bg);
-            this.mSettingView.setVisibility(isOn ? 0 : 8);
+            this.mSettingView.setVisibility(isOn ? View.VISIBLE : View.GONE);
             this.mSettingView.refreshUI();
             this.mWindowManager.addView(this.mContentView, makeParams(isOn));
             this.isShowing = true;
@@ -117,7 +117,7 @@ public class AimSettingFloatingWindow {
     /* access modifiers changed from: private */
     public void onSwitchOpen(boolean open) {
         AimConfigs.getInstance(this.mContext).setOn(this.mGameHelperController.getTopApplication(), open);
-        this.mSettingView.setVisibility(open ? 0 : 8);
+        this.mSettingView.setVisibility(open ? View.VISIBLE : View.GONE);
         if (open) {
             this.mRbOn.setChecked(true);
         } else {
