@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Animation.Nubia.Activity">
+    <style name="Animation.Nubia.Activity" parent="android:Animation">
         <item name="android:activityOpenEnterAnimation">@anim/nubia_activity_open_enter</item>
         <item name="android:activityOpenExitAnimation">@anim/nubia_activity_open_exit</item>
         <item name="android:activityCloseEnterAnimation">@anim/nubia_activity_close_enter</item>
@@ -18,11 +18,11 @@
         <item name="android:fragmentCloseEnterAnimation">@animator/nubia_fragment_close_enter</item>
         <item name="android:fragmentCloseExitAnimation">@animator/nubia_fragment_close_exit</item>
     </style>
-    <style name="Animation.Nubia.Dialog">
+    <style name="Animation.Nubia.Dialog" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/nubia_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/nubia_dialog_exit</item>
     </style>
-    <style name="Animation.NubiaDialog">
+    <style name="Animation.NubiaDialog" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/nubia_dialog_enter</item>
         <item name="android:windowExitAnimation">@anim/nubia_dialog_exit</item>
     </style>
@@ -97,6 +97,8 @@
         <item name="android:src">@mipmap/game_state_light</item>
     </style>
     <style name="MediumFont">
+    </style>
+    <style name="Nubia">
     </style>
     <style name="Nubia.ButtonBar">
         <item name="android:background">@null</item>
@@ -195,10 +197,7 @@
         <item name="android:layout_marginTop">12dp</item>
         <item name="android:layout_marginBottom">9dp</item>
     </style>
-    <style name="TextAppearance.Nubia">
-    </style>
-    <style name="TextAppearance.Nubia.ActionBar.Title.BlurEffect">
-        <item name="android:textColor">@color/nubia_actionbar_title_blureffect_color</item>
+    <style name="TextAppearance.Nubia" parent="android:TextAppearance">
     </style>
     <style name="TextAppearance.Nubia.ActionBarTittle">
         <item name="android:textSize">@dimen/nubia_action_bar_title_size</item>
@@ -208,6 +207,8 @@
     </style>
     <style name="TextAppearance.Nubia.ActionBarTittle.Dark">
         <item name="android:textColor">@color/nubia_primary_text_default_material_dark</item>
+    </style>
+    <style name="TextAppearance.Nubia.AlertDialog">
     </style>
     <style name="TextAppearance.Nubia.AlertDialog.CheckedTextView">
         <item name="android:textColor">@color/nubia_alert_dialog_list_item_color</item>
@@ -237,6 +238,10 @@
     <style name="TextAppearance.Nubia.Small">
         <item name="android:textSize">@dimen/nubia_text_size_small</item>
         <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Nubia.Widget">
+    </style>
+    <style name="TextAppearance.Nubia.Widget.ActionBar">
     </style>
     <style name="TextAppearance.Nubia.Widget.ActionBar.Menu">
         <item name="android:textSize">@dimen/nubia_action_bar_menu_text_size</item>
@@ -274,7 +279,7 @@
         <item name="android:layout_marginBottom">13dp</item>
         <item name="android:singleLine">true</item>
     </style>
-    <style name="Theme.Nubia">
+    <style name="Theme.Nubia" parent="android:Theme">
         <item name="android:disabledAlpha">@dimen/nubia_disabled_alpha_light</item>
         <item name="android:textColorPrimary">@color/nubia_primary_text_material_light</item>
         <item name="android:textColorSecondary">@color/nubia_secondary_text_material_light</item>
@@ -412,10 +417,6 @@
         <item name="shadowDivider">@drawable/nubia_shadow_divider</item>
         <item name="throughDivider">@drawable/nubia_list_divider_through</item>
     </style>
-    <style name="Theme.Nubia.BlurEffect">
-        <item name="android:actionBarStyle">@style/Widget.Nubia.ActionBar.BlurEffect</item>
-        <item name="android:homeAsUpIndicator">@drawable/nubia_ic_ab_back_actionbar_blureffect</item>
-    </style>
     <style name="Theme.Nubia.Dialog">
         <item name="android:backgroundDimAmount">0.55</item>
         <item name="android:textAppearance">@style/TextAppearance.Nubia</item>
@@ -460,14 +461,6 @@
     <style name="Theme.Nubia.Tab">
         <item name="android:actionBarStyle">@style/Widget.Nubia.ActionBar.Tab</item>
     </style>
-    <style name="Theme.Nubia.Translucent.NoTitleBar">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowAnimationStyle">@null</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
-    </style>
     <style name="Theme.Nubia.Wallpaper">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowShowWallpaper">true</item>
@@ -482,12 +475,9 @@
         <item name="android:layout_marginTop">11dp</item>
         <item name="android:layout_marginRight">6dp</item>
     </style>
-    <style name="Widget.Nubia">
+    <style name="Widget.Nubia" parent="android:Widget">
     </style>
-    <style name="Widget.Nubia.ActionBar.BlurEffect">
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:titleTextStyle">@style/TextAppearance.Nubia.ActionBar.Title.BlurEffect</item>
-        <item name="android:backgroundSplit">@drawable/nubia_ab_bottom_transparent_light_holo</item>
+    <style name="Widget.Nubia.ActionBar">
     </style>
     <style name="Widget.Nubia.ActionBar.Tab">
         <item name="android:background">@drawable/nubia_actionbar_tab_bg</item>
@@ -525,6 +515,8 @@
     <style name="Widget.Nubia.Button.Color1">
         <item name="android:textColor">@color/nubia_button_text_color</item>
         <item name="android:background">@drawable/nubia_btn_default_material</item>
+    </style>
+    <style name="Widget.Nubia.CompoundButton">
     </style>
     <style name="Widget.Nubia.CompoundButton.CheckBox">
         <item name="android:button">?android:attr/listChoiceIndicatorMultiple</item>

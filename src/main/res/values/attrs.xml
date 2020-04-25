@@ -340,12 +340,14 @@
     </attr>
     <attr name="state_above_anchor" format="boolean">
     </attr>
+    <declare-styleable name="SelectableImageView">
     <attr name="bg" format="reference">
     </attr>
     <attr name="selected" format="boolean">
     </attr>
     <attr name="text" format="string">
     </attr>
+    </declare-styleable>
     <attr name="prompt" format="reference">
     </attr>
     <attr name="spinnerMode">
@@ -669,9 +671,4 @@
     </attr>
     <attr name="maxHeightRatio" format="reference|float">
     </attr>
-    <declare-styleable name="SelectableImageView">
-        <attr name="bg" format="reference" />
-        <attr name="selected" format="boolean" />
-        <attr name="text" format="string" />
-    </declare-styleable>
 </resources>
