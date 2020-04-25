@@ -21,18 +21,18 @@ import android.os.AsyncTask;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.bean.AppListItemBean;
 import cn.nubia.gamelauncherx.commoninterface.ConstantVariable;
@@ -240,7 +240,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
             this.mLogo.setBackground(this.mContext.getDrawable(R.mipmap.logo));
         }
         if (VERSION.SDK_INT >= 29) {
-            this.mLogo.setVisibility(8);
+            this.mLogo.setVisibility(View.GONE);
         }
         setGameViewMode();
     }
@@ -270,7 +270,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
         this.mAllPageList = viewList;
         this.mGameListViewPager.setAdapter(new GameListPagerAdapter(viewList));
         this.mGameListViewPager.setLayoutParams(mLayoutParams);
-        this.mGameListViewPager.addOnPageChangeListener(new SimpleOnPageChangeListener() {
+        this.mGameListViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             public void onPageSelected(int position) {
                 BannerManager.this.mGameIndicatorView.setCurrentIndicator(position);
             }
@@ -289,13 +289,13 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
     public void switchViewMode() {
         boolean z = false;
         if (this.isListMode) {
-            this.mBannerRecyclerView.setVisibility(8);
-            this.mGameListViewPager.setVisibility(0);
-            this.mGameIndicatorView.setVisibility(0);
+            this.mBannerRecyclerView.setVisibility(View.GONE);
+            this.mGameListViewPager.setVisibility(View.VISIBLE);
+            this.mGameIndicatorView.setVisibility(View.VISIBLE);
         } else {
-            this.mBannerRecyclerView.setVisibility(0);
-            this.mGameListViewPager.setVisibility(8);
-            this.mGameIndicatorView.setVisibility(8);
+            this.mBannerRecyclerView.setVisibility(View.VISIBLE);
+            this.mGameListViewPager.setVisibility(View.GONE);
+            this.mGameIndicatorView.setVisibility(View.GONE);
             this.mLayoutManager.setTextVisibility();
         }
         setLastGameDisplayMode(this.isListMode);
@@ -333,11 +333,11 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
     }
 
     private void setGameListGone() {
-        this.mBannerRecyclerView.setVisibility(8);
+        this.mBannerRecyclerView.setVisibility(View.GONE);
     }
 
     private void setGameListVisible() {
-        this.mBannerRecyclerView.setVisibility(0);
+        this.mBannerRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void initLayoutManager() {
@@ -376,7 +376,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
     /* access modifiers changed from: private */
     public void initVolRatio() {
         if (this.mContext != null) {
-            AudioManager am = (AudioManager) this.mContext.getSystemService("audio");
+            AudioManager am = (AudioManager) this.mContext.getSystemService(Context.AUDIO_SERVICE);
             this.mVolRatio = ((float) am.getStreamVolume(3)) / ((float) am.getStreamMaxVolume(3));
         }
     }
@@ -710,7 +710,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
         int realPosition = this.mGameListAdapter.getRealPosition(position);
         BannerViewHolder holder = carouselLayoutManager.getViewHolderByPosition(carouselLayoutManager.getCenterItemPosition());
         if (holder.mModifyAtmosphere.isShown()) {
-            holder.mMoreOptionsList.setVisibility(8);
+            holder.mMoreOptionsList.setVisibility(View.GONE);
             return;
         }
         LogUtil.d(TAG, "onCenterItemClicked() position : " + position + String.format(Locale.US, "Item %1$d was clicked", new Object[]{Integer.valueOf(realPosition)}));
@@ -734,7 +734,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
                 NubiaTrackManager.getInstance().sendEvent("cn.nubia.gamelauncher", "gamespace_niche_boutique_click");
             }
         } catch (ActivityNotFoundException e) {
-            Toast.makeText(this.mContext, this.mContext.getString(R.string.update_game_center_string), 0).show();
+            Toast.makeText(this.mContext, this.mContext.getString(R.string.update_game_center_string), Toast.LENGTH_SHORT).show();
         } catch (Exception e2) {
             e2.printStackTrace();
         }
@@ -749,7 +749,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
             Intent intent = new Intent();
             String componetName = ((AppListItemBean) this.mGameAddedList.get(realPosition)).getComponetName();
             intent.setComponent(CommonUtil.createComponentName(componetName));
-            intent.addFlags(268435456);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             this.mContext.startActivity(intent);
             recordLastGameComponent(componetName);
             if ("cn.nubia.gamelauncher,cn.nubia.gamelauncher.activity.AppAddActivity".equals(componetName)) {
@@ -811,7 +811,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
         this.mCallback = callback;
     }
 
-    public void addBannerScrollListener(OnScrollListener scrollListener) {
+    public void addBannerScrollListener(RecyclerView.OnScrollListener scrollListener) {
         this.mBannerRecyclerView.addOnScrollListener(scrollListener);
     }
 }

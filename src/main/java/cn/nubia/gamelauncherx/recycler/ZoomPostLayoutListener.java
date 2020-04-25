@@ -1,8 +1,10 @@
 package cn.nubia.gamelauncherx.recycler;
 
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.animation.PathInterpolator;
+
+import androidx.annotation.NonNull;
+
 import cn.nubia.gamelauncherx.recycler.LooperLayoutManager.PostLayoutListener;
 
 public class ZoomPostLayoutListener implements PostLayoutListener {

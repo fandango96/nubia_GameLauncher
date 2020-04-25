@@ -1,14 +1,17 @@
 package cn.nubia.gamelauncherx.recycler;
 
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.view.DrawableLeftTextView;
 
-public class BannerViewHolder extends ViewHolder {
+public class BannerViewHolder extends RecyclerView.ViewHolder
+{
     ImageView mCardView;
     DrawableLeftTextView mGameNameView;
     ImageView mIconView;

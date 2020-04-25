@@ -5,12 +5,15 @@ import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.PaintFlagsDrawFilter;
-import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import cn.nubia.gamelauncherx.recycler.Anim3DHelper;
 
-public class BannerView extends ConstraintLayout {
+public class BannerView extends ConstraintLayout
+{
     private Camera mCamera;
     private Matrix mMatrix;
     private float mOffset;
@@ -39,7 +42,7 @@ public class BannerView extends ConstraintLayout {
         int width = this.mOffset > 0.0f ? 0 : getWidth();
         int height = getHeight() / 2;
         View child = getChildAt(screen);
-        if (child != null && child.getVisibility() == 0) {
+        if (child != null && child.getVisibility() == View.VISIBLE) {
             Camera camera = this.mCamera;
             Matrix matrix = this.mMatrix;
             canvas.save();

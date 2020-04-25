@@ -1,12 +1,13 @@
 package cn.nubia.gamelauncherx.recycler;
 
 import android.graphics.PointF;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.State;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 public class LooperSmoothScroller {
-    public LooperSmoothScroller(@NonNull State state, int position) {
+    public LooperSmoothScroller(@NonNull RecyclerView.State state, int position) {
         if (position < 0) {
             throw new IllegalArgumentException("position can't be less then 0. position is : " + position);
         } else if (position >= state.getItemCount()) {

@@ -10,13 +10,16 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.GameLauncherApplication;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.activity.CustomAstophereMapActivity;
@@ -27,15 +30,16 @@ import cn.nubia.gamelauncherx.util.BitmapUtils;
 import cn.nubia.gamelauncherx.util.CommonUtil;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.Key;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.target.ViewTarget;
-import com.bumptech.glide.signature.StringSignature;
+import com.bumptech.glide.request.transition.Transition;
+import com.bumptech.glide.signature.ObjectKey;
+
 import java.util.HashMap;
 import java.util.List;
 
-public class BannerListAdapter extends Adapter<BannerViewHolder> {
+public class BannerListAdapter extends RecyclerView.Adapter<BannerViewHolder>
+{
     public static final String ASSETS_PREFIX = "file:///android_asset/";
     public static int LIST_MIN_COUNT = 5;
     private static final String TAG = "BannerListAdapter";
@@ -65,30 +69,30 @@ public class BannerListAdapter extends Adapter<BannerViewHolder> {
                 Intent intent = new Intent(BannerListAdapter.this.mContext, CustomAstophereMapActivity.class);
                 intent.putExtra("position", realPosition);
                 BannerListAdapter.this.mContext.startActivity(intent);
-                holder.mMoreOptionsList.setVisibility(8);
+                holder.mMoreOptionsList.setVisibility(View.GONE);
             }
         });
         holder.mUninstallGame.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
                 UninstallController mUninstallController = new UninstallController();
                 if (BannerListAdapter.this.mList != null && BannerListAdapter.this.mList.size() > 0) {
-                    String componetName = ((AppListItemBean) BannerListAdapter.this.mList.get(realPosition)).getComponetName();
+                    String componetName = BannerListAdapter.this.mList.get(realPosition).getComponetName();
                     if (componetName != null && componetName.length() > 0) {
                         mUninstallController.showConfirmDialog(BannerListAdapter.this.mContext, componetName.substring(0, componetName.indexOf(",")));
                     }
                 }
-                holder.mMoreOptionsList.setVisibility(8);
+                holder.mMoreOptionsList.setVisibility(View.GONE);
             }
         });
-        String gameName = ((AppListItemBean) this.mList.get(realPosition)).getName();
+        String gameName = this.mList.get(realPosition).getName();
         holder.mGameNameView.setText(gameName);
-        holder.mStateText.setVisibility(8);
+        holder.mStateText.setVisibility(View.GONE);
         holder.mIconView.setTag(null);
-        Bitmap icon = ((AppListItemBean) this.mList.get(getRealPosition(position))).getIcon();
+        Bitmap icon = this.mList.get(getRealPosition(position)).getIcon();
         if (icon != null) {
             holder.mCardView.setImageResource(R.mipmap.default_card);
-            if (((AppListItemBean) this.mList.get(getRealPosition(position))).isDownloadItem()) {
-                NeoIconDownloadInfo info = ((AppListItemBean) this.mList.get(getRealPosition(position))).getDownloadInfo();
+            if (this.mList.get(getRealPosition(position)).isDownloadItem()) {
+                NeoIconDownloadInfo info = this.mList.get(getRealPosition(position)).getDownloadInfo();
                 this.mNeoDownloadIconMap.put(Integer.valueOf(info.app_id), holder);
                 holder.mIconView.setTag(Integer.valueOf(info.app_id));
                 Bitmap processIcon = info.processIcon;
@@ -97,26 +101,26 @@ public class BannerListAdapter extends Adapter<BannerViewHolder> {
                 } else {
                     holder.mIconView.setBackground(BitmapUtils.convertBitmapToDrawable(icon));
                 }
-                holder.mStateText.setVisibility(0);
+                holder.mStateText.setVisibility(View.VISIBLE);
                 holder.mStateText.setText(CommonUtil.convertToShowStateText(info.status));
                 updateGameNameView(holder, info.icon, gameName);
             } else {
-                holder.mStateText.setVisibility(8);
+                holder.mStateText.setVisibility(View.GONE);
                 updateGameNameView(holder, icon, gameName);
                 holder.mIconView.setBackground(BitmapUtils.convertBitmapToDrawable(icon));
                 holder.mIconView.setTag(null);
             }
-            holder.mIconView.setVisibility(0);
+            holder.mIconView.setVisibility(View.VISIBLE);
         }
         if (CommonUtil.isInternalVersion()) {
             holder.mGameNameView.setMaxLines(2);
         }
-        String url = ((AppListItemBean) this.mList.get(realPosition)).getImageUrl();
+        String url = this.mList.get(realPosition).getImageUrl();
         if (isAddPrefix(url)) {
             url = "file:///android_asset/" + url;
         }
         holder.mCardView.setTag(R.id.tag_second, url);
-        String updateTime = ((AppListItemBean) this.mList.get(realPosition)).getUpdateTime();
+        String updateTime = this.mList.get(realPosition).getUpdateTime();
         if (updateTime == null) {
             updateTime = "";
         }
@@ -148,17 +152,18 @@ public class BannerListAdapter extends Adapter<BannerViewHolder> {
     }
 
     private boolean isAddPrefix(String url) {
-        if (url == null || url.equals("") || (!url.contains("http") && !url.contains("storage"))) {
-            return true;
-        }
-        return false;
+        return url == null || url.equals("") || (!url.contains("http") && !url.contains("storage"));
     }
 
     private void fillCardView(final BannerViewHolder holder, String url, int position, String updateTime) {
-        Glide.with(this.mContext).load(url).signature((Key) new StringSignature(updateTime)).transform(new BannerCardTransformation(this.mContext)).placeholder((int) R.mipmap.default_card).into((Target) new ViewTarget<ImageView, GlideDrawable>(holder.mCardView) {
-            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> glideAnimation) {
-                holder.mIconView.setVisibility(8);
-                ((ImageView) this.view).setImageDrawable(resource);
+        Glide.with(this.mContext).load(url).signature(new ObjectKey(updateTime)).transform(new BannerCardTransformation(this.mContext)).placeholder(
+                R.mipmap.default_card).into((Target) new ViewTarget<ImageView, Drawable>(holder.mCardView) {
+            @Override
+            public void onResourceReady(@NonNull final Drawable resource,
+                    @Nullable final Transition<? super Drawable> transition)
+            {
+                holder.mIconView.setVisibility(View.GONE);
+                this.view.setImageDrawable(resource);
             }
         });
     }
@@ -178,23 +183,23 @@ public class BannerListAdapter extends Adapter<BannerViewHolder> {
     public void updateNeoDownloadIcon(AppListItemBean bean) {
         NeoIconDownloadInfo info = bean.getDownloadInfo();
         if (info != null && this.mNeoDownloadIconMap.containsKey(Integer.valueOf(info.app_id))) {
-            ImageView imageView = ((BannerViewHolder) this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id))).mIconView;
+            ImageView imageView = this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id)).mIconView;
             if (imageView.getTag() != null && imageView.getTag().equals(Integer.valueOf(info.app_id))) {
                 bean.icon = info.icon;
                 imageView.setBackground(BitmapUtils.convertBitmapToDrawable(info.processIcon));
-                updateGameNameView((BannerViewHolder) this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id)), info.icon, info.title);
-                ((BannerViewHolder) this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id))).mStateText.setVisibility(0);
-                ((BannerViewHolder) this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id))).mStateText.setText(CommonUtil.convertToShowStateText(info.status));
+                updateGameNameView(this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id)), info.icon, info.title);
+                this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id)).mStateText.setVisibility(View.VISIBLE);
+                this.mNeoDownloadIconMap.get(Integer.valueOf(info.app_id)).mStateText.setText(CommonUtil.convertToShowStateText(info.status));
             }
         }
     }
 
     public void onViewRecycled(BannerViewHolder holder) {
         if (holder != null) {
-            Glide.clear((View) holder.mCardView);
+            Glide.with(holder.mCardView.getContext()).clear(holder.mCardView);
             holder.mGameNameView.setCompoundDrawables(null, null, null, null);
             holder.mCardView.setImageResource(R.mipmap.default_card);
-            holder.mIconView.setVisibility(8);
+            holder.mIconView.setVisibility(View.GONE);
         }
         super.onViewRecycled(holder);
     }

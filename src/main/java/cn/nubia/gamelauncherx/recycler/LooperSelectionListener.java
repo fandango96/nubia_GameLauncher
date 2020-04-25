@@ -2,13 +2,13 @@ package cn.nubia.gamelauncherx.recycler;
 
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnChildAttachStateChangeListener;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.FrameLayout;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 public abstract class LooperSelectionListener {
     /* access modifiers changed from: private */
@@ -60,14 +60,14 @@ public abstract class LooperSelectionListener {
                 LooperSelectionListener.this.onBackItemClicked(LooperSelectionListener.this.mRecyclerView, LooperSelectionListener.this.mCarouselLayoutManager, v);
             } else if (LooperSelectionListener.this.isEventInMoreSelectArea(position, event)) {
                 BannerViewHolder holder = (BannerViewHolder) LooperSelectionListener.this.mRecyclerView.findViewHolderForAdapterPosition(position);
-                if (holder.mMoreOptions.getAlpha() >= 1.0f && holder.mMoreOptions.getVisibility() == 0) {
+                if (holder.mMoreOptions.getAlpha() >= 1.0f && holder.mMoreOptions.getVisibility() == View.VISIBLE) {
                     FrameLayout frameLayout = holder.mMoreOptionsList;
-                    if (holder.mMoreOptionsList.getVisibility() == 8) {
+                    if (holder.mMoreOptionsList.getVisibility() == View.GONE) {
                         i = 0;
                     }
                     frameLayout.setVisibility(i);
                     LooperSelectionListener looperSelectionListener = LooperSelectionListener.this;
-                    if (holder.mMoreOptionsList.getVisibility() == 0) {
+                    if (holder.mMoreOptionsList.getVisibility() == View.VISIBLE) {
                         z = true;
                     }
                     looperSelectionListener.mMoreOptionsVisible = z;
@@ -135,7 +135,7 @@ public abstract class LooperSelectionListener {
     protected LooperSelectionListener(@NonNull RecyclerView recyclerView, @NonNull LooperLayoutManager carouselLayoutManager) {
         this.mRecyclerView = recyclerView;
         this.mCarouselLayoutManager = carouselLayoutManager;
-        this.mRecyclerView.addOnChildAttachStateChangeListener(new OnChildAttachStateChangeListener() {
+        this.mRecyclerView.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
             public void onChildViewAttachedToWindow(View view) {
                 view.setOnTouchListener(LooperSelectionListener.this.mOnTouchListener);
             }

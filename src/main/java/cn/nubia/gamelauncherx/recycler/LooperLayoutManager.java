@@ -7,22 +7,17 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.CallSuper;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.widget.LinearSmoothScroller;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.Adapter;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.Recycler;
-import android.support.v7.widget.RecyclerView.SmoothScroller.ScrollVectorProvider;
-import android.support.v7.widget.RecyclerView.State;
-import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.LinearSmoothScroller;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.util.LogUtil;
 import cn.nubia.gamelauncherx.view.BannerView;
@@ -32,7 +27,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class LooperLayoutManager extends LayoutManager implements ScrollVectorProvider {
+public class LooperLayoutManager extends RecyclerView.LayoutManager implements RecyclerView.SmoothScroller.ScrollVectorProvider
+{
     private static final boolean CIRCLE_LAYOUT = false;
     public static final int HORIZONTAL = 0;
     public static final int INVALID_POSITION = -1;
@@ -272,8 +268,8 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         return ((getMaxVisibleItems() + 1) * 2) + 1;
     }
 
-    public LayoutParams generateDefaultLayoutParams() {
-        return new LayoutParams(-2, -2);
+    public RecyclerView.LayoutParams generateDefaultLayoutParams() {
+        return new RecyclerView.LayoutParams(-2, -2);
     }
 
     public int getOrientation() {
@@ -330,7 +326,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         requestLayout();
     }
 
-    public void smoothScrollToPosition(@NonNull RecyclerView recyclerView, @NonNull State state, int position) {
+    public void smoothScrollToPosition(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.State state, int position) {
         LinearSmoothScroller linearSmoothScroller = new LinearSmoothScroller(recyclerView.getContext()) {
             public int calculateDyToMakeVisible(View view, int snapPreference) {
                 if (!LooperLayoutManager.this.canScrollVertically()) {
@@ -380,14 +376,14 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         return t1;
     }
 
-    public int scrollVerticallyBy(int dy, @NonNull Recycler recycler, @NonNull State state) {
+    public int scrollVerticallyBy(int dy, @NonNull RecyclerView.Recycler recycler, @NonNull RecyclerView.State state) {
         if (this.mOrientation == 0) {
             return 0;
         }
         return scrollBy(dy, recycler, state);
     }
 
-    public int scrollHorizontallyBy(int dx, Recycler recycler, State state) {
+    public int scrollHorizontallyBy(int dx, RecyclerView.Recycler recycler, RecyclerView.State state) {
         if (1 == this.mOrientation) {
             return 0;
         }
@@ -396,7 +392,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
 
     /* access modifiers changed from: protected */
     @CallSuper
-    public int scrollBy(int diff, @NonNull Recycler recycler, @NonNull State state) {
+    public int scrollBy(int diff, @NonNull RecyclerView.Recycler recycler, @NonNull RecyclerView.State state) {
         int resultScroll = 0;
         if (!(this.mDecoratedChildWidth == null || this.mDecoratedChildHeight == null || getChildCount() == 0 || diff == 0)) {
             if (this.mCircleLayout) {
@@ -433,18 +429,18 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         return resultScroll;
     }
 
-    public void onMeasure(Recycler recycler, State state, int widthSpec, int heightSpec) {
+    public void onMeasure(RecyclerView.Recycler recycler, RecyclerView.State state, int widthSpec, int heightSpec) {
         this.mDecoratedChildSizeInvalid = true;
         super.onMeasure(recycler, state, widthSpec, heightSpec);
     }
 
-    public void onAdapterChanged(Adapter oldAdapter, Adapter newAdapter) {
+    public void onAdapterChanged(RecyclerView.Adapter oldAdapter, RecyclerView.Adapter newAdapter) {
         super.onAdapterChanged(oldAdapter, newAdapter);
         removeAllViews();
     }
 
     @CallSuper
-    public void onLayoutChildren(@NonNull Recycler recycler, @NonNull State state) {
+    public void onLayoutChildren(@NonNull RecyclerView.Recycler recycler, @NonNull RecyclerView.State state) {
         if (state.getItemCount() == 0) {
             removeAndRecycleAllViews(recycler);
             selectItemCenterPosition(-1);
@@ -481,11 +477,11 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         fillData(recycler, state);
     }
 
-    private int calculateScrollForSelectingPosition(int itemPosition, State state) {
+    private int calculateScrollForSelectingPosition(int itemPosition, RecyclerView.State state) {
         return (1 == this.mOrientation ? this.mDecoratedChildHeight : this.mDecoratedChildWidth).intValue() * (itemPosition < state.getItemCount() ? itemPosition : state.getItemCount() - 1);
     }
 
-    private void fillData(@NonNull Recycler recycler, @NonNull State state) {
+    private void fillData(@NonNull RecyclerView.Recycler recycler, @NonNull RecyclerView.State state) {
         float currentScrollPosition = getCurrentScrollPosition();
         generateLayoutOrder(currentScrollPosition, state);
         detachAndScrapAttachedViews(recycler);
@@ -495,7 +491,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         detectOnItemSelectionChanged(currentScrollPosition, state);
     }
 
-    private void detectOnItemSelectionChanged(float currentScrollPosition, State state) {
+    private void detectOnItemSelectionChanged(float currentScrollPosition, RecyclerView.State state) {
         final int centerItem = Math.round(makeScrollPositionInRange0ToCount(currentScrollPosition, state.getItemCount()));
         if (this.mCenterItemPosition != centerItem) {
             if (this.mCenterItemPosition == -1) {
@@ -518,7 +514,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         }
     }
 
-    private void fillDataHorizontal(Recycler recycler, int width, int height) {
+    private void fillDataHorizontal(RecyclerView.Recycler recycler, int width, int height) {
         int top = (height - this.mDecoratedChildHeight.intValue()) / 2;
         int bottom = top + this.mDecoratedChildHeight.intValue();
         int centerViewStart = (width - this.mDecoratedChildWidth.intValue()) / 2;
@@ -529,7 +525,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         }
     }
 
-    private void fillChildItem(int start, int top, int end, int bottom, @NonNull LayoutOrder layoutOrder, @NonNull Recycler recycler, int i) {
+    private void fillChildItem(int start, int top, int end, int bottom, @NonNull LayoutOrder layoutOrder, @NonNull RecyclerView.Recycler recycler, int i) {
         View view = bindChild(layoutOrder.mItemAdapterPosition, recycler);
         ViewCompat.setElevation(view, (float) i);
         ItemTransformation transformation = null;
@@ -559,7 +555,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
                 holder.mTitleBg.setAlpha(0.0f);
                 holder.mMoreOptions.setAlpha(0.0f);
             }
-            if (this.mExcludeList.contains(holder.mGameNameView.getText().toString()) || holder.mStateText.getVisibility() == 0) {
+            if (this.mExcludeList.contains(holder.mGameNameView.getText().toString()) || holder.mStateText.getVisibility() == View.VISIBLE) {
                 holder.mMoreOptions.setAlpha(0.0f);
             }
         }
@@ -715,7 +711,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
     }
 
     private float getOptionsAlphaByPosition(int position, BannerViewHolder holder) {
-        if (holder != null && position == getCenterItemPosition() && holder.mStateText.getVisibility() != 0 && !this.mExcludeList.contains(holder.mGameNameView.getText().toString())) {
+        if (holder != null && position == getCenterItemPosition() && holder.mStateText.getVisibility() != View.VISIBLE && !this.mExcludeList.contains(holder.mGameNameView.getText().toString())) {
             return 1.0f;
         }
         return 0.0f;
@@ -819,7 +815,7 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         return getScrollItemSize() * (this.mItemsCount - 1);
     }
 
-    private void generateLayoutOrder(float currentScrollPosition, @NonNull State state) {
+    private void generateLayoutOrder(float currentScrollPosition, @NonNull RecyclerView.State state) {
         this.mItemsCount = state.getItemCount();
         float absCurrentScrollPosition = makeScrollPositionInRange0ToCount(currentScrollPosition, this.mItemsCount);
         double absDoubleCurrentScrollPosition = makeScrollPositionInRange0ToCount(getDoubleCurrentScrollPosition(), this.mItemsCount);
@@ -860,17 +856,17 @@ public class LooperLayoutManager extends LayoutManager implements ScrollVectorPr
         return (getHeight() - getPaddingEnd()) - getPaddingStart();
     }
 
-    private View bindChild(int position, @NonNull Recycler recycler) {
+    private View bindChild(int position, @NonNull RecyclerView.Recycler recycler) {
         View view = recycler.getViewForPosition(position);
         addView(view);
         measureChildWithMargins(view, 0, 0);
         return view;
     }
 
-    private void recyclerOldViews(Recycler recycler) {
+    private void recyclerOldViews(RecyclerView.Recycler recycler) {
         Iterator it = new ArrayList(recycler.getScrapList()).iterator();
         while (it.hasNext()) {
-            ViewHolder viewHolder = (ViewHolder) it.next();
+            RecyclerView.ViewHolder viewHolder = (RecyclerView.ViewHolder) it.next();
             int adapterPosition = viewHolder.getAdapterPosition();
             boolean found = false;
             LayoutOrder[] access$400 = this.mLayoutHelper.mLayoutOrder;

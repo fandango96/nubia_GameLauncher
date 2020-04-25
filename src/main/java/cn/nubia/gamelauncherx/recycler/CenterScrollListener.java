@@ -1,17 +1,17 @@
 package cn.nubia.gamelauncherx.recycler;
 
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.LayoutManager;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
+import androidx.recyclerview.widget.RecyclerView;
+
 import cn.nubia.gamelauncherx.recycler.LooperLayoutManager.ScrollState;
 import cn.nubia.gamelauncherx.util.LogUtil;
 
-public class CenterScrollListener extends OnScrollListener {
+public class CenterScrollListener extends RecyclerView.OnScrollListener
+{
     private boolean mAutoSet = true;
 
     public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
         super.onScrollStateChanged(recyclerView, newState);
-        LayoutManager layoutManager = recyclerView.getLayoutManager();
+        RecyclerView.LayoutManager layoutManager = recyclerView.getLayoutManager();
         if (!(layoutManager instanceof LooperLayoutManager)) {
             this.mAutoSet = true;
             return;
