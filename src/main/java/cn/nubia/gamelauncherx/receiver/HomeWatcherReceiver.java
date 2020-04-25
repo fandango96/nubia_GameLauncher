@@ -22,7 +22,7 @@ public class HomeWatcherReceiver extends BroadcastReceiver {
         if (context == null || TextUtils.isEmpty(className)) {
             return false;
         }
-        List<RunningTaskInfo> list = ((ActivityManager) context.getSystemService("activity")).getRunningTasks(1);
+        List<RunningTaskInfo> list = ((ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE)).getRunningTasks(1);
         if (list == null || list.size() <= 0) {
             return false;
         }
