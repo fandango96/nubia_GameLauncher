@@ -1,5 +1,17 @@
 package cn.nubia.gamelauncherx.test;
 
+import android.content.Context;
+import android.text.format.Time;
+import android.util.Log;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import cn.nubia.gamelauncherx.GameLauncherApplication;
+
 public class CopyTestDataUtil {
     private String mDbExportRootPath = null;
 
@@ -9,6 +21,124 @@ public class CopyTestDataUtil {
     /* JADX WARNING: Removed duplicated region for block: B:46:0x00f8 A[Catch:{ Exception -> 0x00fc }] */
     /* Code decompiled incorrectly, please refer to instructions dump. */
     public void exportAppDbFile() {
+        Time r10 = new Time();
+        r10.setToNow();
+        StringBuilder r13 = new StringBuilder();
+        Context r14 = GameLauncherApplication.CONTEXT;
+        String r15 = "gameLauncher_file";
+        r13.append(r14.getExternalFilesDir(r15));
+        r13.append(File.separator);
+        r13.append("gamelauncher");
+        String r9 = r13.toString();
+        File r8 = new File(r9);
+        if (!r8.exists()) {
+            r8.mkdir();
+        }
+        r13 = new StringBuilder();
+        r13.append(r9);
+        r13.append(File.separator);
+        r13.append(r10.hour);
+        r13.append("_");
+        r13.append(r10.minute);
+        r13.append("_");
+        r13.append(r10.second);
+        String r12 = r13.toString();
+        File r11 = new File(r12);
+        if (!r11.exists()) {
+            r11.mkdir();
+        }
+        r13 = new StringBuilder();
+        r13.append(r12);
+        r13.append(File.separator);
+        r13.append("appadd.db");
+        String r3 = r13.toString();
+        File r2 = new File(r3);
+        if (!r2.exists()) {
+            try
+            {
+                r2.createNewFile();
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                Log.i("lsm", "TestDataReceiver exportAppDbFile finished");
+                return;
+            }
+        }
+        FileInputStream r5;
+        try
+        {
+            r5 = new FileInputStream(GameLauncherApplication.CONTEXT.getDatabasePath("appadd.db"));
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+            Log.i("lsm", "TestDataReceiver exportAppDbFile finished");
+            return;
+        }
+        FileOutputStream r7;
+        try
+        {
+            r7 = new FileOutputStream(r2);
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+            try
+            {
+                r5.close();
+            }
+            catch (IOException ex)
+            {
+                ex.printStackTrace();
+            }
+            Log.i("lsm", "TestDataReceiver exportAppDbFile finished");
+            return;
+        }
+        byte[] r0 = new byte[1024];
+        int ret;
+        do
+        {
+            try
+            {
+                ret = r5.read(r0);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                break;
+            }
+            if (ret <= 0)
+            {
+                break;
+            }
+            try
+            {
+                r7.write(r0);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+                break;
+            }
+        } while (true);
+        try
+        {
+            r5.close();
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+        try
+        {
+            r7.close();
+        }
+        catch (IOException ex)
+        {
+            ex.printStackTrace();
+        }
+        Log.i("lsm", "TestDataReceiver exportAppDbFile finished");
         /*
             r16 = this;
             android.text.format.Time r10 = new android.text.format.Time
@@ -150,6 +280,5 @@ public class CopyTestDataUtil {
             r4 = r5
             goto L_0x00c2
         */
-        throw new UnsupportedOperationException("Method not decompiled: cn.nubia.gamelauncher.test.CopyTestDataUtil.exportAppDbFile():void");
     }
 }
