@@ -1,6 +1,7 @@
 package cn.nubia.gamelauncherx.controller;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
@@ -15,7 +16,6 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import cn.nubia.commonui.app.AlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.adapter.HasAddAdapter;
 import cn.nubia.gamelauncherx.bean.AppListItemBean;
@@ -152,7 +152,7 @@ public class UninstallController implements OnSelectedCountChangeListener {
 
     /* access modifiers changed from: private */
     public void showConfirmDialog(Context context) {
-        new Builder(context, 2131624188).setMessage((CharSequence) this.mContext.getString(R.string.sure_uninstall)).setPositiveButton((CharSequence) this.mContext.getString(R.string.confirm), (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(context, 2131624188).setMessage((CharSequence) this.mContext.getString(R.string.sure_uninstall)).setPositiveButton((CharSequence) this.mContext.getString(R.string.confirm), (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 UninstallController.this.uninstallApps(UninstallController.this.getUninstallList());
             }
@@ -163,7 +163,7 @@ public class UninstallController implements OnSelectedCountChangeListener {
     }
 
     public void showConfirmDialog(final Context context, final String pkgName) {
-        new Builder(context, 2131624188).setMessage((CharSequence) context.getString(R.string.sure_uninstall)).setPositiveButton((CharSequence) context.getString(R.string.confirm), (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(context, 2131624188).setMessage((CharSequence) context.getString(R.string.sure_uninstall)).setPositiveButton((CharSequence) context.getString(R.string.confirm), (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 UninstallController.this.doUninstallApp(context, pkgName);
             }

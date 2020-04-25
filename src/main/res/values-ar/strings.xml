@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">التنقل للشاشة الرئيسية</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">التنقل لأعلى</string>
-    <string name="abc_action_menu_overflow_description">خيارات أكثر</string>
-    <string name="abc_action_mode_done">تم</string>
-    <string name="abc_activity_chooser_view_see_all">عرض الكل</string>
-    <string name="abc_activitychooserview_choose_application">اختر تطبيق</string>
-    <string name="abc_search_hint">بحث...</string>
-    <string name="abc_searchview_description_clear">مسح البحث</string>
-    <string name="abc_searchview_description_query">بحث</string>
-    <string name="abc_searchview_description_search">بحث</string>
-    <string name="abc_searchview_description_submit">إرسال البحث</string>
-    <string name="abc_searchview_description_voice">بحث صوتي</string>
-    <string name="abc_shareactionprovider_share_with">مشاركة مع</string>
-    <string name="abc_shareactionprovider_share_with_application">مشاركة مع %s</string>
-    <string name="abc_toolbar_collapse_description">إنزال</string>
     <string name="action_bar_home_description">التنقل للشاشة الرئيسية</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

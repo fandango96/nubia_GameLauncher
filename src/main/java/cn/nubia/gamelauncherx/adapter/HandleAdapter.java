@@ -7,11 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
-import cn.nubia.commonui.actionbar.internal.widget.TintCheckBox;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.util.LogUtil;
 import java.util.List;
@@ -25,7 +25,7 @@ public class HandleAdapter extends BaseAdapter {
     private int selectIndex = -1;
 
     private class ViewHolder {
-        TintCheckBox mCheckbox;
+        CheckBox mCheckbox;
         TextView mConnecting;
         TextView mHandleName;
 
@@ -48,7 +48,7 @@ public class HandleAdapter extends BaseAdapter {
     }
 
     public long getItemId(int position) {
-        return (long) position;
+        return position;
     }
 
     public boolean isEnabled(int position) {
@@ -63,14 +63,14 @@ public class HandleAdapter extends BaseAdapter {
         if (view == null) {
             mViewHolder = new ViewHolder();
             view = this.layoutInflater.inflate(R.layout.handle_list_item, null);
-            mViewHolder.mHandleName = (TextView) view.findViewById(R.id.handle_list_name);
-            mViewHolder.mCheckbox = (TintCheckBox) view.findViewById(R.id.tint_checkbox);
-            mViewHolder.mConnecting = (TextView) view.findViewById(R.id.conn_ing);
+            mViewHolder.mHandleName = view.findViewById(R.id.handle_list_name);
+            mViewHolder.mCheckbox = view.findViewById(R.id.tint_checkbox);
+            mViewHolder.mConnecting = view.findViewById(R.id.conn_ing);
             view.setTag(mViewHolder);
         } else {
             mViewHolder = (ViewHolder) view.getTag();
         }
-        String deviceName = ((BluetoothDevice) this.mBlueList.get(position)).getName();
+        String deviceName = this.mBlueList.get(position).getName();
         LogUtil.d(TAG, "[getView] deviceName = " + deviceName);
         TextView textView = mViewHolder.mHandleName;
         if (TextUtils.isEmpty(deviceName)) {

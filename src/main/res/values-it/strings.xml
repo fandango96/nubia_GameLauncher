@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Navigazione home</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigazione su</string>
-    <string name="abc_action_menu_overflow_description">Altre opzioni</string>
-    <string name="abc_action_mode_done">Fine</string>
-    <string name="abc_activity_chooser_view_see_all">Vedi tutto</string>
-    <string name="abc_activitychooserview_choose_application">Scegliere una app</string>
-    <string name="abc_search_hint">Ricerca...</string>
-    <string name="abc_searchview_description_clear">Elimina query</string>
-    <string name="abc_searchview_description_query">Cerca query</string>
-    <string name="abc_searchview_description_search">Ricerca</string>
-    <string name="abc_searchview_description_submit">Consegna query</string>
-    <string name="abc_searchview_description_voice">Ricerca vocale</string>
-    <string name="abc_shareactionprovider_share_with">Condividere con</string>
-    <string name="abc_shareactionprovider_share_with_application">Condividere con %s</string>
-    <string name="abc_toolbar_collapse_description">Collasso</string>
     <string name="action_bar_home_description">Navigazione home</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

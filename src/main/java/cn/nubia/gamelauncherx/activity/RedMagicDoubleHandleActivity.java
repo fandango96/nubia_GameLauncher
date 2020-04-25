@@ -1,5 +1,6 @@
 package cn.nubia.gamelauncherx.activity;
 
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothDevice;
 import android.content.ComponentName;
 import android.content.Context;
@@ -32,9 +33,6 @@ import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 
-import cn.nubia.commonui.app.AlertDialog;
-import cn.nubia.commonui.app.AlertDialog.Builder;
-import cn.nubia.commonui.widget.NubiaSearchView;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.adapter.HandleAdapter;
 import cn.nubia.gamelauncherx.gamehandle.GameHandleConnectionStateChangeListener;
@@ -59,7 +57,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
     private static final int REQUEST_PERMISSION_ACCESS_LOCATION = 4001;
     private static final String TAG = "RedMagicDoubleHandleActivity";
     /* access modifiers changed from: private */
-    public Builder builder;
+    public AlertDialog.Builder builder;
     /* access modifiers changed from: private */
     public int connectingCountDown;
     /* access modifiers changed from: private */
@@ -291,7 +289,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                 LogUtil.d(RedMagicDoubleHandleActivity.TAG, "[GameHandleScanCallback] onScanFailed");
                 RedMagicDoubleHandleActivity.this.mListView.setAdapter(RedMagicDoubleHandleActivity.this.handleAdapter);
                 RedMagicDoubleHandleActivity.this.builder.setView(RedMagicDoubleHandleActivity.this.view);
-                RedMagicDoubleHandleActivity.this.builder.setPositiveButton(17039370, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+                RedMagicDoubleHandleActivity.this.builder.setPositiveButton(R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -470,7 +468,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mBluetoothConnectTwo.setOnClickListener(this);
         this.mHandleCalibrationTwo.setOnClickListener(this);
         this.mLeft_name.setText(getString(R.string.handle_redmagic_handle));
-        this.builder = new Builder(this);
+        this.builder = new AlertDialog.Builder(this);
     }
 
     /* access modifiers changed from: private */
@@ -737,9 +735,9 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mScanHelper.stopScan();
         this.mScanHelper.scan(this.mScanCallback);
         this.view = LayoutInflater.from(this).inflate(R.layout.bluetooth_conn_search, null);
-        this.builder = new Builder(this);
+        this.builder = new AlertDialog.Builder(this);
         this.builder.setView(this.view);
-        this.builder.setPositiveButton(17039360, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        this.builder.setPositiveButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 RedMagicDoubleHandleActivity.this.mScanHelper.stopScan();
                 RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.searchDeviceTask);
@@ -781,7 +779,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.handleAdapter = new HandleAdapter(this, this.mBlueList);
         this.mListView.setAdapter(this.handleAdapter);
         this.builder.setView(this.view);
-        this.builder.setPositiveButton(17039370, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        this.builder.setPositiveButton(R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 RedMagicDoubleHandleActivity.this.mScanHelper.stopScan();
                 RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.searchDeviceTask);
@@ -826,7 +824,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         }
         this.view = LayoutInflater.from(this).inflate(R.layout.bluetooth_no_connectable_device, null);
         this.builder.setView(this.view);
-        this.builder.setPositiveButton(17039370, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        this.builder.setPositiveButton(R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }
@@ -839,7 +837,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.countDown = 60;
         this.countdownView.setText(getString(R.string.handle_calibration_countdown) + this.countDown + ")");
         this.builder.setView(this.view);
-        this.builder.setPositiveButton(17039360, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        this.builder.setPositiveButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int i) {
                 RedMagicDoubleHandleActivity.this.mUiHandle.removeCallbacks(RedMagicDoubleHandleActivity.this.handleCalibrationTask);
                 dialog.dismiss();
@@ -982,7 +980,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                     break;
                 }
                 break;
-            case NubiaSearchView.MAX /*99*/:
+            case 99:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
                         this.mHandleDirectionLeftTwo.setVisibility(View.VISIBLE);
@@ -1096,7 +1094,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
                     break;
                 }
                 break;
-            case NubiaSearchView.MAX /*99*/:
+            case 99:
                 if (deviceId != leftDeviceId) {
                     if (deviceId == rightDeviceId) {
                         this.mHandleDirectionLeftTwo.setVisibility(View.INVISIBLE);

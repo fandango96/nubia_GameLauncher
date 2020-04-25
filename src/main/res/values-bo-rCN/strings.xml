@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">ཕྱིར་ལོག</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">གོང་དུ་ཕྱོགས།</string>
-    <string name="abc_action_menu_overflow_description">དེ་ལས་མང་བའི་འདམ་བྱང་།</string>
-    <string name="abc_action_mode_done">ལེགས་འགྲུབ་བྱུང་།</string>
-    <string name="abc_activity_chooser_view_see_all">ཡིག་ཁུག</string>
-    <string name="abc_activitychooserview_choose_application">ཉེར་སྤྱོད་འདམ་ཟིན།</string>
-    <string name="abc_search_hint">འཚོལ།…</string>
-    <string name="abc_searchview_description_clear">ལྟ་རྟོག་གཙང་སེལ་བྱེད།</string>
-    <string name="abc_searchview_description_query">ལྟ་རྟོག་འཚོལ་བཤེར་བྱེད།</string>
-    <string name="abc_searchview_description_search">འཚོལ།</string>
-    <string name="abc_searchview_description_submit">ལྟ་རྟོག་སྤྲོད།</string>
-    <string name="abc_searchview_description_voice">སྐད་སྒྲ་འཚོལ།</string>
-    <string name="abc_shareactionprovider_share_with">བགོས་རོལ་བྱེད།</string>
-    <string name="abc_shareactionprovider_share_with_application">%sདང་མཉམ་རོལ་བྱེད།</string>
-    <string name="abc_toolbar_collapse_description">ལྟེབ་པ།</string>
     <string name="action_bar_home_description">ཕྱིར་ལོག</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

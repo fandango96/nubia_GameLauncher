@@ -1,12 +1,12 @@
 package cn.nubia.gamelauncherx.util;
 
+import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.net.Uri;
-import cn.nubia.commonui.app.NubiaCenterAlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
 
 public class GameCenterHelper {
@@ -74,7 +74,7 @@ public class GameCenterHelper {
     }
 
     private static void showGameCenterNotFoundDialog(Context context) {
-        new Builder(context, 2131624188).setMessage((CharSequence) context.getString(R.string.gamecenter_not_fonund_dialog)).setPositiveButton(17039370, (OnClickListener) new OnClickListener() {
+        new AlertDialog.Builder(context, 2131624188).setMessage((CharSequence) context.getString(R.string.gamecenter_not_fonund_dialog)).setPositiveButton(R.string.exit_ok, (OnClickListener) new OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }

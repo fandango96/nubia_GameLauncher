@@ -2,6 +2,7 @@ package cn.nubia.gamelauncherx.gamehandle;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -11,8 +12,6 @@ import android.content.SharedPreferences.Editor;
 import android.os.AsyncTask;
 import android.provider.Settings.Global;
 import android.util.Log;
-import cn.nubia.commonui.app.NubiaCenterAlertDialog;
-import cn.nubia.commonui.app.NubiaCenterAlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.commoninterface.ConstantVariable;
 
@@ -33,7 +32,7 @@ public class NubiaCTAPermissionUtils {
     public static void showPermissionDialog(final Context context, final Intent intent) {
         if (context != null) {
             final SharedPreferences CTASetting = context.getSharedPreferences("data", 0);
-            Builder builder = new Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setCancelable(false);
             builder.setView((int) R.layout.redmagic_cta_permission);
             builder.setNegativeButton((int) R.string.cta_deny, (OnClickListener) new OnClickListener() {
@@ -55,7 +54,7 @@ public class NubiaCTAPermissionUtils {
     public static void showPermissionDialogHome(final Context context) {
         if (context != null) {
             final Editor CTASetting = context.getSharedPreferences("data", 0).edit();
-            Builder builder = new Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setCancelable(false);
             builder.setView((int) R.layout.gamelauncher_cta_permission);
             builder.setNegativeButton((int) R.string.cta_deny, (OnClickListener) new OnClickListener() {
@@ -79,7 +78,7 @@ public class NubiaCTAPermissionUtils {
                     dialog.dismiss();
                 }
             });
-            NubiaCenterAlertDialog dialog = builder.create();
+            AlertDialog dialog = builder.create();
             dialog.show();
             dialog.getWindow().setWindowAnimations(R.style.Theme_Nubia_Dialog);
         }

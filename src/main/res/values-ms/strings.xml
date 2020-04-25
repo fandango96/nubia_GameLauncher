@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Navigasi utama</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigasi ke atas</string>
-    <string name="abc_action_menu_overflow_description">Lagi pilihan</string>
-    <string name="abc_action_mode_done">Selesai</string>
-    <string name="abc_activity_chooser_view_see_all">Lihat semua</string>
-    <string name="abc_activitychooserview_choose_application">Pilih apl</string>
-    <string name="abc_search_hint">Mencari...</string>
-    <string name="abc_searchview_description_clear">Pertanyaan yang jelas</string>
-    <string name="abc_searchview_description_query">Cari pertanyaan</string>
-    <string name="abc_searchview_description_search">Carian</string>
-    <string name="abc_searchview_description_submit">Kemukakan soalan</string>
-    <string name="abc_searchview_description_voice">Carian suara</string>
-    <string name="abc_shareactionprovider_share_with">Berkongsi dengan</string>
-    <string name="abc_shareactionprovider_share_with_application">Berkongsi dengan %s</string>
-    <string name="abc_toolbar_collapse_description">Runtuh</string>
     <string name="action_bar_home_description">Navigasi utama</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

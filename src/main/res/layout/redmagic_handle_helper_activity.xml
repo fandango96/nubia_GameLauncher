@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-    <android.support.v4.view.ViewPager android:id="@+id/helper_pager" android:layout_width="match_parent" android:layout_height="match_parent"/>
+    <androidx.core.view.ViewPager android:id="@+id/helper_pager" android:layout_width="match_parent" android:layout_height="match_parent"/>
     <include layout="@layout/game_actionbar_titlebar_layout"/>
     <LinearLayout android:orientation="horizontal" android:id="@+id/page_indicator" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:layout_marginBottom="16dp" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
         <ImageView android:layout_gravity="center_vertical" android:id="@+id/handle_page_indicator0" android:background="@drawable/gamespace_navigation_light" android:layout_width="13dp" android:layout_height="3dp"/>

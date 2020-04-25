@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Dom</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Do góry</string>
-    <string name="abc_action_menu_overflow_description">Więcej opcji</string>
-    <string name="abc_action_mode_done">Gotowe</string>
-    <string name="abc_activity_chooser_view_see_all">Pokaż wszystkie</string>
-    <string name="abc_activitychooserview_choose_application">Wybierz aplikację</string>
-    <string name="abc_search_hint">Szukanie...</string>
-    <string name="abc_searchview_description_clear">Wyczyśc kolejkę</string>
-    <string name="abc_searchview_description_query">Szukaj kolejki</string>
-    <string name="abc_searchview_description_search">Szukaj</string>
-    <string name="abc_searchview_description_submit">Prześlij kolejkę</string>
-    <string name="abc_searchview_description_voice">Wyszukiwanie głosowe</string>
-    <string name="abc_shareactionprovider_share_with">Udostępnij</string>
-    <string name="abc_shareactionprovider_share_with_application">Udostępnij % s</string>
-    <string name="abc_toolbar_collapse_description">Odłóż</string>
     <string name="action_bar_home_description">Dom</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

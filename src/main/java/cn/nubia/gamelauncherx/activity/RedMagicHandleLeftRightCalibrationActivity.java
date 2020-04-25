@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cn.nubia.commonui.widget.NubiaSearchView;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.gamehandle.GameHandleConnectionStateChangeListener;
 import cn.nubia.gamelauncherx.gamehandle.GameHandleConstant;
@@ -239,7 +238,7 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
                     break;
                 }
                 break;
-            case NubiaSearchView.MAX /*99*/:
+            case 99:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
                         this.mHandleDirectionRightTwo.setVisibility(View.VISIBLE);
@@ -304,7 +303,7 @@ public class RedMagicHandleLeftRightCalibrationActivity extends BaseActivity imp
                     break;
                 }
                 break;
-            case NubiaSearchView.MAX /*99*/:
+            case 99:
                 if (this.mEventDeviceId != this.leftDeviceId) {
                     if (this.mEventDeviceId == this.rightDeviceId) {
                         this.mHandleDirectionRightTwo.setVisibility(View.INVISIBLE);

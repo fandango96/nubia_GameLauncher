@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Navigovať domov</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigovať hore</string>
-    <string name="abc_action_menu_overflow_description">Viac možností</string>
-    <string name="abc_action_mode_done">Hotovo</string>
-    <string name="abc_activity_chooser_view_see_all">Pozrieť si všetko</string>
-    <string name="abc_activitychooserview_choose_application">Vybrať aplikáciu</string>
-    <string name="abc_search_hint">Hľadať...</string>
-    <string name="abc_searchview_description_clear">Vyčistiť dotaz</string>
-    <string name="abc_searchview_description_query">Hľadať otázky</string>
-    <string name="abc_searchview_description_search">Vyhľadávanie</string>
-    <string name="abc_searchview_description_submit">Odoslať otázku</string>
-    <string name="abc_searchview_description_voice">Hlasové vyhľadávanie</string>
-    <string name="abc_shareactionprovider_share_with">Zdieľať s</string>
-    <string name="abc_shareactionprovider_share_with_application">Zdieľať s %s</string>
-    <string name="abc_toolbar_collapse_description">Zbaliť</string>
     <string name="action_bar_home_description">Navigovať domov</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

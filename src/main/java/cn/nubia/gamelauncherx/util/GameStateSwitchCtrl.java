@@ -1,6 +1,7 @@
 package cn.nubia.gamelauncherx.util;
 
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,8 +34,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import cn.nubia.commonui.app.AlertDialog;
-import cn.nubia.commonui.app.AlertDialog.Builder;
 import cn.nubia.gamelauncherx.R;
 import cn.nubia.gamelauncherx.activity.GameSpaceActivity;
 import cn.nubia.gamelauncherx.activity.RedMagicDoubleHandleActivity;
@@ -549,7 +548,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
     }
 
     private void exitGameSpace() {
-        Builder builder = new Builder(this.mActivity, 2131624188);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.mActivity, 2131624188);
         builder.setView(LayoutInflater.from(this.mActivity).inflate(R.layout.dialog_text_exit, null));
         builder.setPositiveButton((int) R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             @TargetApi(11)
@@ -563,7 +562,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
                     }
                 }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, new Void[]{null});
             }
-        }).setNegativeButton(17039360, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        }).setNegativeButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }
@@ -588,15 +587,15 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
     }
 
     private void showShieldPhoneDialog() {
-        Builder builder = new Builder(this.mActivity, 2131624188);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.mActivity, 2131624188);
         builder.setView(LayoutInflater.from(this.mActivity).inflate(R.layout.dialog_text_shieldphone, null));
-        builder.setPositiveButton(17039370, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 GameStateSwitchCtrl.this.openPhoneMode();
                 GameStateSwitchCtrl.this.mShieldPhoneOpen = !GameStateSwitchCtrl.this.mShieldPhoneOpen;
                 dialog.dismiss();
             }
-        }).setNegativeButton(17039360, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        }).setNegativeButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }
@@ -812,7 +811,7 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
     }
 
     private void showGameTimeWeeklyRemindDialog() {
-        new Builder(this.mActivity, 2131624188).setMessage((CharSequence) this.mActivity.getString(R.string.game_time_weekly_message)).setNegativeButton(17039360, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        new AlertDialog.Builder(this.mActivity, 2131624188).setMessage((CharSequence) this.mActivity.getString(R.string.game_time_weekly_message)).setNegativeButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }
@@ -832,8 +831,8 @@ public class GameStateSwitchCtrl implements OnClickListener, Callbacks {
     }
 
     private void showGameTimeDialog() {
-        Builder builder = new Builder(this.mActivity, 2131624188);
-        builder.setMessage((CharSequence) this.mActivity.getString(R.string.gametime_overtime_message)).setPositiveButton(17039370, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.mActivity, 2131624188);
+        builder.setMessage((CharSequence) this.mActivity.getString(R.string.gametime_overtime_message)).setPositiveButton(R.string.exit_ok, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 TimerServiceUtil.setTimeOut4HValue(GameStateSwitchCtrl.this.mActivity);
                 dialog.dismiss();

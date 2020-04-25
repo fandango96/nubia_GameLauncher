@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Navigare acasă</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Navigare în sus</string>
-    <string name="abc_action_menu_overflow_description">Mai multe opţiuni</string>
-    <string name="abc_action_mode_done">Finalizat</string>
-    <string name="abc_activity_chooser_view_see_all">Vezi tot</string>
-    <string name="abc_activitychooserview_choose_application">Alegeți o aplicație</string>
-    <string name="abc_search_hint">Caută...</string>
-    <string name="abc_searchview_description_clear">Goliți interogarea</string>
-    <string name="abc_searchview_description_query">Solicitare de căutare</string>
-    <string name="abc_searchview_description_search">căutare</string>
-    <string name="abc_searchview_description_submit">Trimite solicitare</string>
-    <string name="abc_searchview_description_voice">Căutare vocală</string>
-    <string name="abc_shareactionprovider_share_with">Partajează cu</string>
-    <string name="abc_shareactionprovider_share_with_application">Partajează cu %s</string>
-    <string name="abc_toolbar_collapse_description">Colaps</string>
     <string name="action_bar_home_description">Navigare acasă</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

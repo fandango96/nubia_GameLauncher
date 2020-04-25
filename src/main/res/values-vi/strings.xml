@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Điều hướng màn hình chính</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Điều hướng lên</string>
-    <string name="abc_action_menu_overflow_description">Nhiều hơn các tùy chọn</string>
-    <string name="abc_action_mode_done">Đã xong</string>
-    <string name="abc_activity_chooser_view_see_all">Xem tất cả</string>
-    <string name="abc_activitychooserview_choose_application">Chọn ứng dụng</string>
-    <string name="abc_search_hint">Tìm kiếm...</string>
-    <string name="abc_searchview_description_clear">Xóa bỏ câu hỏi</string>
-    <string name="abc_searchview_description_query">Tìm kiếm câu hỏi</string>
-    <string name="abc_searchview_description_search">Tìm kiếm</string>
-    <string name="abc_searchview_description_submit">Gửi câu hỏi</string>
-    <string name="abc_searchview_description_voice">Tìm kiếm thoại</string>
-    <string name="abc_shareactionprovider_share_with">Chia sẻ với</string>
-    <string name="abc_shareactionprovider_share_with_application">Chia sẻ với %s</string>
-    <string name="abc_toolbar_collapse_description">Sụp đổ</string>
     <string name="action_bar_home_description">Điều hướng màn hình chính</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

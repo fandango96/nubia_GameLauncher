@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">হোম নেভিগেট করুন</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">ওপরে নেভিগেট করুন</string>
-    <string name="abc_action_menu_overflow_description">আরও বিকল্প</string>
-    <string name="abc_action_mode_done">শেষ</string>
-    <string name="abc_activity_chooser_view_see_all">সব দেখুন</string>
-    <string name="abc_activitychooserview_choose_application">একটি অ্যাপ বাছুন</string>
-    <string name="abc_search_hint">অনুসন্ধান...</string>
-    <string name="abc_searchview_description_clear">জিজ্ঞাস্য মুছে পরিস্কার করুন</string>
-    <string name="abc_searchview_description_query">প্রশ্ন অনুসন্ধান করুন</string>
-    <string name="abc_searchview_description_search">অনুসন্ধান করুন</string>
-    <string name="abc_searchview_description_submit">প্রশ্ন জমা দিন</string>
-    <string name="abc_searchview_description_voice">ভয়েস অনুসন্ধান</string>
-    <string name="abc_shareactionprovider_share_with">সঙ্গে শেয়ার করুন</string>
-    <string name="abc_shareactionprovider_share_with_application">%S এর সাথে শেয়ার করুন</string>
-    <string name="abc_toolbar_collapse_description">বিনষ্ট</string>
     <string name="action_bar_home_description">হোম নেভিগেট করুন</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>

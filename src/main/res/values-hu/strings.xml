@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="abc_action_bar_home_description">Kezdőlap</string>
-    <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
-    <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
-    <string name="abc_action_bar_up_description">Felfelé</string>
-    <string name="abc_action_menu_overflow_description">További beállítások</string>
-    <string name="abc_action_mode_done">Befejezés</string>
-    <string name="abc_activity_chooser_view_see_all">Összes megtekintése</string>
-    <string name="abc_activitychooserview_choose_application">Válasszon alkalmazást</string>
-    <string name="abc_search_hint">Keresés...</string>
-    <string name="abc_searchview_description_clear">Lekérdezés törlése</string>
-    <string name="abc_searchview_description_query">Kérdés keresése</string>
-    <string name="abc_searchview_description_search">Google</string>
-    <string name="abc_searchview_description_submit">Kérdés elküldése</string>
-    <string name="abc_searchview_description_voice">Hangalapú keresés</string>
-    <string name="abc_shareactionprovider_share_with">Megosztás ezzel:</string>
-    <string name="abc_shareactionprovider_share_with_application">Megosztás ezzel: %s</string>
-    <string name="abc_toolbar_collapse_description">Összecsukás</string>
     <string name="action_bar_home_description">Kezdőlap</string>
     <string name="action_bar_home_description_format">%1$s, %2$s</string>
     <string name="action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
