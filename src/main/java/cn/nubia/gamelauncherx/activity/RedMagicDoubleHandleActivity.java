@@ -468,7 +468,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mBluetoothConnectTwo.setOnClickListener(this);
         this.mHandleCalibrationTwo.setOnClickListener(this);
         this.mLeft_name.setText(getString(R.string.handle_redmagic_handle));
-        this.builder = new AlertDialog.Builder(this);
+        this.builder = new AlertDialog.Builder(this, 2131624188);
     }
 
     /* access modifiers changed from: private */
@@ -735,7 +735,7 @@ public class RedMagicDoubleHandleActivity extends BaseActivity implements OnClic
         this.mScanHelper.stopScan();
         this.mScanHelper.scan(this.mScanCallback);
         this.view = LayoutInflater.from(this).inflate(R.layout.bluetooth_conn_search, null);
-        this.builder = new AlertDialog.Builder(this);
+        this.builder = new AlertDialog.Builder(this, 2131624188);
         this.builder.setView(this.view);
         this.builder.setPositiveButton(R.string.exit_cancel, (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {

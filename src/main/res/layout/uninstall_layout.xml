@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
     <include layout="@layout/uninstall_titlebar_layout"/>
-    <android.support.v7.widget.RecyclerView android:id="@+id/unintsall_list" android:layout_width="match_parent" android:layout_height="227dp" android:layout_marginStart="30dp" android:layout_marginEnd="28dp"/>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/unintsall_list" android:layout_width="match_parent" android:layout_height="227dp" android:layout_marginStart="30dp" android:layout_marginEnd="28dp"/>
     <TextView android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/uninstall_btn" android:layout_width="157dp" android:layout_height="37dp" android:layout_marginTop="14dp" android:layout_marginBottom="13dp" android:text="@string/uninstall"/>
 </LinearLayout>

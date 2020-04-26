@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ConstantVariable {
-    public static Uri APPADD_URI = Uri.parse("content://cn.nubia.gamelauncher.db.AppAddProvider/appadd?notify=true");
-    public static Uri APPADD_URI_NO_NOTIFY = Uri.parse("content://cn.nubia.gamelauncher.db.AppAddProvider/appadd?notify=false");
+    public static Uri APPADD_URI = Uri.parse("content://cn.nubia.gamelauncherx.db.AppAddProvider/appadd?notify=true");
+    public static Uri APPADD_URI_NO_NOTIFY = Uri.parse("content://cn.nubia.gamelauncherx.db.AppAddProvider/appadd?notify=false");
     public static int APP_TYPE_GAME = 2;
     public static int APP_TYPE_NORMAL_APP = 1;
     public static boolean HAS_PERMISSION = false;
@@ -18,8 +18,8 @@ public class ConstantVariable {
     public static ArrayList<String> SYSTEM_APP_LIST = new ArrayList<>();
     public static final int TYPE_ADD = 0;
     public static final int TYPE_UNINSTALL = 1;
-    public static Uri USER_ROMOVE_URI = Uri.parse("content://cn.nubia.gamelauncher.db.AppAddProvider/user_remove?notify=true");
-    public static Uri USER_ROMOVE_URI_NO_NOTIFY = Uri.parse("content://cn.nubia.gamelauncher.db.AppAddProvider/user_remove?notify=false");
+    public static Uri USER_ROMOVE_URI = Uri.parse("content://cn.nubia.gamelauncherx.db.AppAddProvider/user_remove?notify=true");
+    public static Uri USER_ROMOVE_URI_NO_NOTIFY = Uri.parse("content://cn.nubia.gamelauncherx.db.AppAddProvider/user_remove?notify=false");
 
     static {
         SYSTEM_APP_LIST.add("cn.nubia.neogamecenter");

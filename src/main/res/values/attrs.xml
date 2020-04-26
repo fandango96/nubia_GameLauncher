@@ -133,20 +133,6 @@
     </attr>
     <attr name="title" format="string">
     </attr>
-    <attr name="navigationMode">
-        <enum name="listMode" value="1" />
-        <enum name="normal" value="0" />
-        <enum name="tabMode" value="2" />
-    </attr>
-    <attr name="displayOptions">
-        <flag name="none" value="0" />
-        <flag name="disableHome" value="20" />
-        <flag name="homeAsUp" value="4" />
-        <flag name="showCustom" value="10" />
-        <flag name="showHome" value="2" />
-        <flag name="showTitle" value="8" />
-        <flag name="useLogo" value="1" />
-    </attr>
     <attr name="subtitle" format="string">
     </attr>
     <attr name="titleTextStyle" format="reference">
@@ -255,20 +241,7 @@
     </attr>
     <attr name="measureWithLargestChild" format="boolean">
     </attr>
-    <attr name="showDividers">
-        <flag name="none" value="0" />
-        <flag name="beginning" value="1" />
-        <flag name="end" value="4" />
-        <flag name="middle" value="2" />
-    </attr>
     <attr name="dividerPadding" format="dimension">
-    </attr>
-    <attr name="showAsAction">
-        <flag name="always" value="2" />
-        <flag name="collapseActionView" value="8" />
-        <flag name="ifRoom" value="1" />
-        <flag name="never" value="0" />
-        <flag name="withText" value="4" />
     </attr>
     <attr name="actionLayout" format="reference">
     </attr>
@@ -393,9 +366,6 @@
     <attr name="actionBarTheme" format="reference">
     </attr>
     <attr name="actionBarWidgetTheme" format="reference">
-    </attr>
-    <attr name="actionBarSize" format="dimension">
-        <enum name="wrap_content" value="0" />
     </attr>
     <attr name="actionBarDivider" format="reference">
     </attr>
@@ -660,14 +630,6 @@
     <attr name="theme" format="reference">
     </attr>
     <attr name="backgroundTint" format="color">
-    </attr>
-    <attr name="backgroundTintMode">
-        <enum name="add" value="16" />
-        <enum name="multiply" value="14" />
-        <enum name="screen" value="15" />
-        <enum name="src_atop" value="9" />
-        <enum name="src_in" value="5" />
-        <enum name="src_over" value="3" />
     </attr>
     <attr name="maxHeightRatio" format="reference|float">
     </attr>

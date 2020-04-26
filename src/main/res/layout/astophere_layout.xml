@@ -9,6 +9,6 @@
     </LinearLayout>
     <LinearLayout android:layout_gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="44dp" android:layout_marginRight="30dp" android:layout_marginBottom="44dp">
         <TextView android:textSize="14dp" android:textColor="#fffafafa" android:gravity="center" android:id="@+id/gallery" android:background="@mipmap/gallery_bg" android:layout_width="50dp" android:layout_height="50dp" android:text="@string/astophere_gallery"/>
-        <android.support.v7.widget.RecyclerView android:id="@+id/picture_list" android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <androidx.recyclerview.widget.RecyclerView android:id="@+id/picture_list" android:layout_width="match_parent" android:layout_height="match_parent"/>
     </LinearLayout>
 </FrameLayout>

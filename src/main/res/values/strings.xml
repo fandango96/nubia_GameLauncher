@@ -29,7 +29,7 @@
     <string name="nubia_next_button_label">Next</string>
     <string name="nubia_nine">9</string>
     <string name="nubia_notification_hour_time">%d hours ago</string>
-    <string name="nubia_notification_hours_minutes_time">%d hours and %d minutes ago</string>
+    <string name="nubia_notification_hours_minutes_time">%1$d hours and %2$d minutes ago</string>
     <string name="nubia_notification_hours_one_minute_time">%d hours and 1 minute ago</string>
     <string name="nubia_notification_minutes_time">%d minutes ago</string>
     <string name="nubia_notification_one_hours_minutes_time">A hour and %d minutes ago</string>

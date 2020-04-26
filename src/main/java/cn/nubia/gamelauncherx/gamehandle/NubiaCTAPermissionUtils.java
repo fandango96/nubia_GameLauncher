@@ -32,7 +32,7 @@ public class NubiaCTAPermissionUtils {
     public static void showPermissionDialog(final Context context, final Intent intent) {
         if (context != null) {
             final SharedPreferences CTASetting = context.getSharedPreferences("data", 0);
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, 2131624188);
             builder.setCancelable(false);
             builder.setView((int) R.layout.redmagic_cta_permission);
             builder.setNegativeButton((int) R.string.cta_deny, (OnClickListener) new OnClickListener() {
@@ -54,7 +54,7 @@ public class NubiaCTAPermissionUtils {
     public static void showPermissionDialogHome(final Context context) {
         if (context != null) {
             final Editor CTASetting = context.getSharedPreferences("data", 0).edit();
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            AlertDialog.Builder builder = new AlertDialog.Builder(context, 2131624188);
             builder.setCancelable(false);
             builder.setView((int) R.layout.gamelauncher_cta_permission);
             builder.setNegativeButton((int) R.string.cta_deny, (OnClickListener) new OnClickListener() {

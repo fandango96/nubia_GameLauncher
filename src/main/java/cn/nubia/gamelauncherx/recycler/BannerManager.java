@@ -528,7 +528,7 @@ public class BannerManager implements OnCenterItemClickListener, OnCenterItemSel
 
     @NonNull
     private AppListItemBean getAddGameItemBean() {
-        return new AppListItemBean(this.mResources.getString(R.string.add_game), "cn.nubia.gamelauncher,cn.nubia.gamelauncher.activity.AppAddActivity", "card_add.png");
+        return new AppListItemBean(this.mResources.getString(R.string.add_game), "cn.nubia.gamelauncherx,cn.nubia.gamelauncherx.activity.AppAddActivity", "card_add.png");
     }
 
     private List<AppListItemBean> getmOperationList() {

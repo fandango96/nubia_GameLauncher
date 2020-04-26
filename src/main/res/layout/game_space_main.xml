@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
     <cn.nubia.gamelauncherx.recycler.BannerRecyclerView
         android:id="@+id/game_list" android:layout_width="match_parent" android:layout_height="@dimen/game_shadow_height" android:layout_marginBottom="14dp" android:alpha="0" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent"/>
     <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18dp" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent">
-        <androidx.core.view.ViewPager android:id="@+id/main_home_entrance_vp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        <androidx.viewpager.widget.ViewPager android:id="@+id/main_home_entrance_vp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
         <cn.nubia.gamelauncherx.gamelist.IndicatorView
             android:id="@+id/main_home_entrance_indicator" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="28dp"/>
     </LinearLayout>
@@ -12,5 +12,5 @@
     <TextView android:textSize="8sp" android:textColor="#ffffffff" android:gravity="center" android:id="@+id/add_shortcut_tips" android:background="@drawable/add_shortcut_tips_bg_top" android:paddingLeft="18dp" android:paddingRight="14dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginRight="366dp" android:text="@string/add_shortcut_tips" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/add_shortcut"/>
     <include layout="@layout/upper_view"/>
     <include layout="@layout/lower_view"/>
-    <android.support.v7.widget.RecyclerView android:id="@+id/guild_page_list" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"/>
-</androidx.constraintlayout.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/guild_page_list" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
